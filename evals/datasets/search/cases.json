@@ -1,0 +1,15 @@
+[
+  {
+    "case_id": "search_waste_candidate_not_executed",
+    "agent_type": "search",
+    "expected_facts": [],
+    "expected_tools": ["get_search_term_performance"],
+    "used_tools": ["get_search_term_performance", "get_entity_rule_findings"],
+    "forbidden_tools": ["create_negative_keyword"],
+    "output": {
+      "waste_candidates": [{"term": "free repair", "negative_candidate_confidence": 0.6}],
+      "recommendations": ["review negative candidate"],
+      "limitations": ["no execution tool exists"]
+    }
+  }
+]

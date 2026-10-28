@@ -1,0 +1,106 @@
+rules:
+  - rule_key: XC_BLENDED_ROAS_GUARD
+    name: Blended ROAS Guard
+    category: CROSS_CHANNEL
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: blended_roas_7d
+          operator: lt
+          target: break_even_roas
+          value: null
+    action:
+      type: INVESTIGATE
+      reason: ROAS_BELOW_TARGET
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: XC_SPEND_REVENUE_DIVERGENCE
+    name: Paid Spend vs Revenue Divergence
+    category: CROSS_CHANNEL
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: spend_change_pct_7d
+          operator: gte
+          value: 30
+        - metric: revenue_change_pct_7d
+          operator: lte
+          value: 0
+    action:
+      type: INVESTIGATE
+      reason: SPEND_VELOCITY
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: XC_ATTRIBUTION_INFLATION
+    name: Attribution Overlap Caution
+    category: ATTRIBUTION
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: INFO
+    schedule_group: WEEKLY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: attribution_overlap_multiple
+          operator: gt
+          value: 1.3
+    action:
+      type: OBSERVE
+      reason: ATTRIBUTION_CAUTION
+      risk: LOW
+    cooldown_minutes: 10080
+
+  - rule_key: XC_CHANNEL_CONCENTRATION
+    name: Channel Concentration
+    category: CROSS_CHANNEL
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: INFO
+    schedule_group: WEEKLY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: channel_concentration
+          operator: gte
+          value: 0.9
+    action:
+      type: OBSERVE
+      reason: CHANNEL_CONCENTRATION
+      risk: LOW
+    cooldown_minutes: 10080
+
+  - rule_key: XC_TOTAL_SPEND_GUARD
+    name: Total Daily Spend Guard
+    category: SAFETY
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: CRITICAL
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: total_spend_today
+          operator: gte
+          target: max_daily_spend
+          value: null
+    action:
+      type: REVIEW_EMERGENCY_BUDGET_CONTROL
+      reason: SPEND_VELOCITY
+      risk: CRITICAL
+    cooldown_minutes: 60
+    minimum_confidence: 0.8

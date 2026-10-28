@@ -1,0 +1,16 @@
+[
+  {
+    "case_id": "reviewer_catches_wrong_roas",
+    "agent_type": "reviewer",
+    "expected_facts": [{"key": "passed", "value": "False"}],
+    "expected_tools": ["get_rule_evidence"],
+    "used_tools": ["get_rule_evidence"],
+    "forbidden_tools": ["run_sql"],
+    "output": {
+      "passed": false,
+      "numeric_errors": ["strategy states ROAS 2.0 but evidence says 1.0"],
+      "unsupported_claims": ["competitor caused decline"],
+      "review_confidence": 0.9
+    }
+  }
+]

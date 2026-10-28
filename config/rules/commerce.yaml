@@ -1,0 +1,101 @@
+rules:
+  - rule_key: COM_REVENUE_DROP
+    name: Revenue Drop
+    category: COMMERCE
+    platform: SHOPIFY
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: revenue_change_pct_7d
+          operator: lte
+          value: -25
+    action:
+      type: INVESTIGATE
+      reason: REVENUE_DROP
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: COM_REFUND_SPIKE
+    name: Refund Spike
+    category: COMMERCE
+    platform: SHOPIFY
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [SHOPIFY_REFUNDS]
+    guards: {}
+    conditions:
+      all:
+        - metric: refund_rate_30d
+          operator: gte
+          target: refund_rate_critical
+          value: null
+    action:
+      type: CHECK_REFUND
+      reason: REFUND_SPIKE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: COM_AOV_DROP
+    name: AOV Drop
+    category: COMMERCE
+    platform: SHOPIFY
+    evaluation_level: ACCOUNT
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: aov_change_pct_7d
+          operator: lte
+          value: -20
+    action:
+      type: INVESTIGATE
+      reason: AOV_DROP
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: COM_PRODUCT_MIX
+    name: Product Mix Shift Signal
+    category: COMMERCE
+    platform: SHOPIFY
+    evaluation_level: ACCOUNT
+    severity: INFO
+    schedule_group: WEEKLY
+    required_capabilities: [SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: product_mix_shift
+          operator: eq
+          value: true
+    action:
+      type: INVESTIGATE
+      reason: AOV_DROP
+      risk: LOW
+    cooldown_minutes: 10080
+
+  - rule_key: COM_INVENTORY_RISK
+    name: Inventory Capability Guard
+    category: COMMERCE
+    platform: SHOPIFY
+    evaluation_level: ACCOUNT
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [INVENTORY]
+    guards: {}
+    conditions:
+      all:
+        - metric: inventory_capability
+          operator: eq
+          value: false
+    action:
+      type: CHECK_INVENTORY
+      reason: INVENTORY_RISK
+      risk: LOW
+    cooldown_minutes: 1440

@@ -1,0 +1,124 @@
+rules:
+  - rule_key: DATA_STALE
+    name: Data Source Stale
+    category: DATA
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards:
+      data_freshness_minutes: 30
+    conditions:
+      all:
+        - metric: source_stale
+          operator: eq
+          value: true
+    action:
+      type: CHECK_DATA_SOURCE
+      reason: DATA_STALE
+      risk: LOW
+    cooldown_minutes: 360
+    minimum_confidence: 0.6
+
+  - rule_key: DATA_SHOPIFY_MISSING
+    name: Shopify Missing While Ads Active
+    category: DATA
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: shopify_stale
+          operator: eq
+          value: true
+    action:
+      type: CHECK_DATA_SOURCE
+      reason: DATA_STALE
+      risk: LOW
+    cooldown_minutes: 360
+
+  - rule_key: DATA_METRIC_DISCONTINUITY
+    name: Metric Discontinuity Across Entities
+    category: DATA
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: metric_discontinuity
+          operator: eq
+          value: true
+    action:
+      type: CHECK_TRACKING
+      reason: TRACKING_ANOMALY
+      risk: LOW
+    cooldown_minutes: 360
+
+  - rule_key: SAFETY_HARD_SPEND_LIMIT
+    name: Global Hard Spend Limit
+    category: SAFETY
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: CRITICAL
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS, GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: total_spend_today
+          operator: gte
+          target: max_daily_spend
+          value: null
+    action:
+      type: REVIEW_EMERGENCY_BUDGET_CONTROL
+      reason: SPEND_VELOCITY
+      risk: CRITICAL
+    cooldown_minutes: 60
+    minimum_confidence: 0.8
+
+  - rule_key: SAFETY_SPEND_VELOCITY
+    name: Spend Velocity Anomaly
+    category: SAFETY
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS]
+    guards: {}
+    conditions:
+      all:
+        - metric: spend_velocity_multiple
+          operator: gt
+          value: 2.0
+    action:
+      type: INVESTIGATE
+      reason: SPEND_VELOCITY
+      risk: MEDIUM
+    cooldown_minutes: 120
+
+  - rule_key: SAFETY_TRACKING_LOSS
+    name: Account-wide Tracking Loss Signal
+    category: SAFETY
+    platform: null
+    evaluation_level: ACCOUNT
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: tracking_loss_signal
+          operator: eq
+          value: true
+    action:
+      type: CHECK_TRACKING
+      reason: TRACKING_ANOMALY
+      risk: LOW
+    cooldown_minutes: 360

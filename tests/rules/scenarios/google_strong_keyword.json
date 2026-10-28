@@ -1,0 +1,28 @@
+{
+  "name": "Strong keyword should be labeled as strong performer",
+  "rule": {
+    "rule_key": "GOOGLE_KEYWORD_STRONG_PERFORMER",
+    "version": 1,
+    "category": "KEYWORD",
+    "platform": "GOOGLE",
+    "evaluation_level": "KEYWORD",
+    "severity": "INFO",
+    "guards": {"min_conversions": 3, "min_spend": 20},
+    "conditions": {"all": [{"metric": "keyword_cpa_7d", "operator": "lte", "target": "target_cpa", "value": null}]},
+    "action": {"type": "OBSERVE", "reason": "ROAS_ABOVE_TARGET", "risk": "LOW"},
+    "cooldown_minutes": 1440
+  },
+  "context": {
+    "metrics": {"keyword_cpa_7d": 18.0, "keyword_spend_7d": 100.0, "keyword_conversions_7d": 6, "clicks_7d": 80, "spend_7d": 100.0, "purchases_7d": 6, "entity_age_hours": 300},
+    "business_targets": {"target_cpa": 25.0},
+    "data_freshness_minutes": 5,
+    "entity_age_hours": 300,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "OBSERVE", "severity": "INFO", "confidence_band": "MEDIUM"}
+}

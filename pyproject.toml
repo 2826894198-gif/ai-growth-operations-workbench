@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+  "integration: requires a live AdsPower Local API (deselect with -m 'not integration')",
+  "smoke: requires a live AdsPower + browser",
+]

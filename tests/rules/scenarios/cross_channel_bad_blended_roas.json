@@ -1,0 +1,28 @@
+{
+  "name": "Blended ROAS below break-even should trigger investigation",
+  "rule": {
+    "rule_key": "XC_BLENDED_ROAS_GUARD",
+    "version": 1,
+    "category": "CROSS_CHANNEL",
+    "platform": null,
+    "evaluation_level": "ACCOUNT",
+    "severity": "HIGH",
+    "guards": {},
+    "conditions": {"all": [{"metric": "blended_roas_7d", "operator": "lt", "target": "break_even_roas", "value": null}]},
+    "action": {"type": "INVESTIGATE", "reason": "ROAS_BELOW_TARGET", "risk": "MEDIUM"},
+    "cooldown_minutes": 1440
+  },
+  "context": {
+    "metrics": {"blended_roas_7d": 0.8, "clicks_7d": 300, "spend_7d": 600, "purchases_7d": 8, "entity_age_hours": 700},
+    "business_targets": {"break_even_roas": 1.2},
+    "data_freshness_minutes": 5,
+    "entity_age_hours": 700,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "INVESTIGATE", "severity": "HIGH", "confidence_band": "MEDIUM"}
+}

@@ -1,0 +1,360 @@
+rules:
+  - rule_key: META_NO_PURCHASE_BURN
+    name: No Purchase Burn
+    category: CAMPAIGN
+    platform: META
+    evaluation_level: AD
+    severity: HIGH
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_age_hours: 24
+      data_freshness_minutes: 30
+      min_clicks: 30
+      attribution_delay_minutes: 120
+      min_spend: 20
+    conditions:
+      all:
+        - metric: purchases_3d
+          operator: eq
+          value: 0
+        - metric: spend_3d
+          operator: target_multiple_gte
+          target: target_cpa
+          multiple: 2.0
+    action:
+      type: REVIEW_PAUSE
+      reason: NO_PURCHASE_BURN
+      risk: MEDIUM
+    cooldown_minutes: 1440
+    minimum_confidence: 0.7
+
+  - rule_key: META_CPA_OVERSHOOT
+    name: CPA Overshoot
+    category: CAMPAIGN
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_age_hours: 24
+      data_freshness_minutes: 60
+      min_purchases: 3
+    conditions:
+      all:
+        - metric: cpa_3d
+          operator: target_multiple_gt
+          target: target_cpa
+          multiple: 1.5
+    action:
+      type: REVIEW_REDUCE_BUDGET
+      reason: CPA_OVERSHOOT
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_STRONG_PERFORMER
+    name: Strong Performer
+    category: CAMPAIGN
+    platform: META
+    evaluation_level: AD
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_purchases: 3
+      min_age_hours: 24
+    conditions:
+      all:
+        - metric: roas_7d
+          operator: gte
+          target: target_roas
+          value: null
+        - metric: cpa_7d
+          operator: lte
+          target: target_cpa
+          value: null
+    action:
+      type: OBSERVE
+      reason: ROAS_ABOVE_TARGET
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: META_SCALE_CANDIDATE
+    name: Scale Candidate
+    category: BUDGET
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_purchases: 5
+      min_stable_hours: 48
+      data_freshness_minutes: 60
+    conditions:
+      all:
+        - metric: roas_7d
+          operator: gte
+          target: target_roas
+          value: null
+        - metric: cpa_7d
+          operator: lte
+          target: target_cpa
+          value: null
+    action:
+      type: REVIEW_SCALE
+      reason: ROAS_ABOVE_TARGET
+      risk: MEDIUM
+    cooldown_minutes: 1440
+    minimum_confidence: 0.75
+
+  - rule_key: META_SCALE_COOLDOWN
+    name: Scale Cooldown After Budget Change
+    category: BUDGET
+    platform: META
+    evaluation_level: AD
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      recent_change_hours: 24
+    conditions:
+      all:
+        - metric: recent_budget_change
+          operator: eq
+          value: true
+    action:
+      type: OBSERVE
+      reason: LEARNING_PROTECTION
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: META_CREATIVE_FATIGUE
+    name: Creative Fatigue
+    category: CREATIVE
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_age_hours: 72
+      min_impressions: 10000
+    conditions:
+      all:
+        - metric: ctr_change_pct_7d
+          operator: lte
+          value: -20
+        - metric: frequency_7d
+          operator: gte
+          value: 2.5
+    action:
+      type: REFRESH_CREATIVE
+      reason: CREATIVE_FATIGUE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_CTR_DETERIORATION
+    name: CTR Deterioration
+    category: CREATIVE
+    platform: META
+    evaluation_level: AD
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_impressions: 10000
+    conditions:
+      all:
+        - metric: ctr_change_pct_7d
+          operator: lte
+          value: -30
+    action:
+      type: REFRESH_CREATIVE
+      reason: CTR_DETERIORATION
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: META_FREQUENCY_PRESSURE
+    name: Frequency Pressure
+    category: AUDIENCE
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_impressions: 20000
+    conditions:
+      all:
+        - metric: frequency_7d
+          operator: gte
+          value: 3.5
+        - metric: ctr_change_pct_7d
+          operator: lte
+          value: -10
+    action:
+      type: REVIEW_AUDIENCE_EXPANSION
+      reason: FREQUENCY_PRESSURE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_HIGH_CLICK_LOW_PURCHASE
+    name: High Click Low Purchase
+    category: FUNNEL
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 50
+    conditions:
+      all:
+        - metric: ctr_7d
+          operator: gte
+          value: 0.005
+        - metric: cvr_7d
+          operator: lte
+          value: 0.01
+    action:
+      type: CHECK_LANDING_PAGE
+      reason: FUNNEL_ISSUE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_LOW_CTR
+    name: Low CTR
+    category: CREATIVE
+    platform: META
+    evaluation_level: AD
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_impressions: 20000
+    conditions:
+      all:
+        - metric: ctr_7d
+          operator: lte
+          value: 0.0025
+    action:
+      type: REFRESH_CREATIVE
+      reason: CTR_DETERIORATION
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: META_CPM_SHOCK
+    name: CPM Shock
+    category: ANOMALY
+    platform: META
+    evaluation_level: AD
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards: {}
+    conditions:
+      all:
+        - metric: cpm_zscore_7d
+          operator: gt
+          value: 2.5
+    action:
+      type: INVESTIGATE
+      reason: CPM_SHOCK
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: META_DELIVERY_COLLAPSE
+    name: Delivery Collapse
+    category: CAMPAIGN
+    platform: META
+    evaluation_level: AD
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards: {}
+    conditions:
+      all:
+        - metric: impressions_change_pct_7d
+          operator: lte
+          value: -60
+    action:
+      type: INVESTIGATE
+      reason: DELIVERY_COLLAPSE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_LEARNING_PROTECTION
+    name: Learning Protection
+    category: ANOMALY
+    platform: META
+    evaluation_level: AD
+    severity: INFO
+    schedule_group: INTRADAY
+    required_capabilities: [META_INSIGHTS]
+    guards: {}
+    conditions:
+      all:
+        - metric: in_learning
+          operator: eq
+          value: true
+    action:
+      type: OBSERVE
+      reason: LEARNING_PROTECTION
+      risk: LOW
+    cooldown_minutes: 360
+
+  - rule_key: META_AUDIENCE_SATURATION
+    name: Audience Saturation Signal
+    category: AUDIENCE
+    platform: META
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_age_hours: 96
+    conditions:
+      all:
+        - metric: frequency_7d
+          operator: gte
+          value: 3.0
+        - metric: ctr_change_pct_7d
+          operator: lte
+          value: -15
+        - metric: cpa_change_pct_7d
+          operator: gte
+          value: 15
+    action:
+      type: REVIEW_AUDIENCE_EXPANSION
+      reason: FREQUENCY_PRESSURE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: META_WINNER_CREATIVE
+    name: Winner Creative
+    category: CREATIVE
+    platform: META
+    evaluation_level: AD
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_purchases: 5
+      min_stable_hours: 48
+    conditions:
+      all:
+        - metric: roas_7d
+          operator: gte
+          target: target_roas
+          value: null
+        - metric: cpa_7d
+          operator: lte
+          target: target_cpa
+          value: null
+    action:
+      type: OBSERVE
+      reason: ROAS_ABOVE_TARGET
+      risk: LOW
+    cooldown_minutes: 1440

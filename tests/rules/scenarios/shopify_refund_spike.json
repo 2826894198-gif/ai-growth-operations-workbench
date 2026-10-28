@@ -1,0 +1,28 @@
+{
+  "name": "Refund spike should trigger check refund",
+  "rule": {
+    "rule_key": "COM_REFUND_SPIKE",
+    "version": 1,
+    "category": "COMMERCE",
+    "platform": "SHOPIFY",
+    "evaluation_level": "ACCOUNT",
+    "severity": "HIGH",
+    "guards": {},
+    "conditions": {"all": [{"metric": "refund_rate_30d", "operator": "gte", "target": "refund_rate_critical", "value": null}]},
+    "action": {"type": "CHECK_REFUND", "reason": "REFUND_SPIKE", "risk": "MEDIUM"},
+    "cooldown_minutes": 1440
+  },
+  "context": {
+    "metrics": {"refund_rate_30d": 0.14, "clicks_7d": 100, "spend_7d": 100, "purchases_7d": 5, "entity_age_hours": 700},
+    "business_targets": {"refund_rate_critical": 0.10},
+    "data_freshness_minutes": 4,
+    "entity_age_hours": 700,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "CHECK_REFUND", "severity": "HIGH", "confidence_band": "MEDIUM"}
+}

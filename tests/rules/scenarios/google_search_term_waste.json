@@ -1,0 +1,31 @@
+{
+  "name": "Search term waste should be a negative-keyword recommendation only",
+  "rule": {
+    "rule_key": "GOOGLE_SEARCH_TERM_WASTE",
+    "version": 1,
+    "category": "SEARCH_TERM",
+    "platform": "GOOGLE",
+    "evaluation_level": "SEARCH_TERM",
+    "severity": "MEDIUM",
+    "guards": {"min_clicks": 10},
+    "conditions": {"all": [
+      {"metric": "search_term_spend_30d", "operator": "target_multiple_gte", "target": "target_cpa", "multiple": 1.5},
+      {"metric": "search_term_conversions_30d", "operator": "eq", "value": 0}
+    ]},
+    "action": {"type": "REVIEW_NEGATIVE_KEYWORD", "reason": "SEARCH_TERM_WASTE", "risk": "MEDIUM"},
+    "cooldown_minutes": 2880
+  },
+  "context": {
+    "metrics": {"search_term_spend_30d": 90.0, "search_term_conversions_30d": 0, "clicks_7d": 40, "spend_7d": 90.0, "purchases_7d": 0, "entity_age_hours": 200},
+    "business_targets": {"target_cpa": 30.0},
+    "data_freshness_minutes": 8,
+    "entity_age_hours": 200,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 10, "min_purchases_units": 1, "min_spend_units": 10},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "REVIEW_NEGATIVE_KEYWORD", "severity": "MEDIUM", "confidence_band": "MEDIUM"}
+}

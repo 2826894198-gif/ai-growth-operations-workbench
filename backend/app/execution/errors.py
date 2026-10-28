@@ -1,0 +1,44 @@
+"""Unified execution error codes (PART 06 §154)."""
+
+from enum import Enum
+
+
+class ExecutionErrorCode(str, Enum):
+    EXECUTION_DISABLED = "EXECUTION_DISABLED"
+    KILL_SWITCH_ACTIVE = "KILL_SWITCH_ACTIVE"
+    APPROVAL_REQUIRED = "APPROVAL_REQUIRED"
+    APPROVAL_EXPIRED = "APPROVAL_EXPIRED"
+    APPROVAL_REVOKED = "APPROVAL_REVOKED"
+    APPROVAL_MISMATCH = "APPROVAL_MISMATCH"
+    ACTION_NOT_ALLOWED = "ACTION_NOT_ALLOWED"
+    ACTION_RISK_TOO_HIGH = "ACTION_RISK_TOO_HIGH"
+    STATE_DRIFT = "STATE_DRIFT"
+    PRECONDITION_FAILED = "PRECONDITION_FAILED"
+    RESOURCE_LOCKED = "RESOURCE_LOCKED"
+    DATA_STALE = "DATA_STALE"
+    TRACKING_ANOMALY_ACTIVE = "TRACKING_ANOMALY_ACTIVE"
+    EXPERIMENT_PROTECTED = "EXPERIMENT_PROTECTED"
+    CHANGE_LIMIT_EXCEEDED = "CHANGE_LIMIT_EXCEEDED"
+    DAILY_CUMULATIVE_LIMIT_EXCEEDED = "DAILY_CUMULATIVE_LIMIT_EXCEEDED"
+    RATE_LIMIT_EXCEEDED = "RATE_LIMIT_EXCEEDED"
+    SHARED_BUDGET_SCOPE_UNAPPROVED = "SHARED_BUDGET_SCOPE_UNAPPROVED"
+    PROVIDER_VALIDATE_FAILED = "PROVIDER_VALIDATE_FAILED"
+    PROVIDER_MUTATION_FAILED = "PROVIDER_MUTATION_FAILED"
+    PROVIDER_TIMEOUT = "PROVIDER_TIMEOUT"
+    PROVIDER_OUTCOME_UNKNOWN = "PROVIDER_OUTCOME_UNKNOWN"
+    VERIFICATION_FAILED = "VERIFICATION_FAILED"
+    COMPENSATION_FAILED = "COMPENSATION_FAILED"
+    UNSUPPORTED_PROVIDER_CONFIGURATION = "UNSUPPORTED_PROVIDER_CONFIGURATION"
+
+
+class ExecutionError(Exception):
+    def __init__(self, code: str, message: str, provider_error_code: str = None, provider_request_id: str = None):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+        self.provider_error_code = provider_error_code
+        self.provider_request_id = provider_request_id
+
+
+def execution_error(code: str, message: str, **kwargs) -> ExecutionError:
+    return ExecutionError(code=code, message=message, **kwargs)

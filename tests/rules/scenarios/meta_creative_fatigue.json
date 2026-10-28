@@ -1,0 +1,31 @@
+{
+  "name": "Creative fatigue with CTR drop and elevated frequency",
+  "rule": {
+    "rule_key": "META_CREATIVE_FATIGUE",
+    "version": 1,
+    "category": "CREATIVE",
+    "platform": "META",
+    "evaluation_level": "AD",
+    "severity": "MEDIUM",
+    "guards": {"min_age_hours": 72, "min_impressions": 10000},
+    "conditions": {"all": [
+      {"metric": "ctr_change_pct_7d", "operator": "lte", "value": -20},
+      {"metric": "frequency_7d", "operator": "gte", "value": 2.5}
+    ]},
+    "action": {"type": "REFRESH_CREATIVE", "reason": "CREATIVE_FATIGUE", "risk": "MEDIUM"},
+    "cooldown_minutes": 1440
+  },
+  "context": {
+    "metrics": {"ctr_change_pct_7d": -31.0, "frequency_7d": 3.1, "impressions_7d": 50000, "clicks_7d": 400, "spend_7d": 200, "purchases_7d": 3, "entity_age_hours": 120},
+    "business_targets": {},
+    "data_freshness_minutes": 10,
+    "entity_age_hours": 120,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "REFRESH_CREATIVE", "severity": "MEDIUM", "confidence_band": "MEDIUM"}
+}

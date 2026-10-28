@@ -1,0 +1,1755 @@
+{
+  "accounts": [
+    {
+      "external_account_id": "act_987654321",
+      "name": "Brand Main US",
+      "currency": "USD",
+      "timezone": "America/New_York"
+    }
+  ],
+  "campaigns": [
+    {
+      "external_id": "238471111101",
+      "name": "US Prospecting - Broad",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_PURCHASES",
+      "buying_type": "AUCTION",
+      "start_time": "2026-08-29T12:00:00+00:00",
+      "stop_time": null,
+      "created_time": "2026-08-29T12:00:00+00:00",
+      "updated_time": "2026-10-27T12:00:00+00:00"
+    },
+    {
+      "external_id": "238471111102",
+      "name": "US Retargeting - CBO",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_PURCHASES",
+      "buying_type": "AUCTION",
+      "start_time": "2026-09-28T12:00:00+00:00",
+      "stop_time": null,
+      "created_time": "2026-09-28T12:00:00+00:00",
+      "updated_time": "2026-10-27T12:00:00+00:00"
+    }
+  ],
+  "ad_groups": [
+    {
+      "external_id": "238471222201",
+      "campaign_external_id": "238471111101",
+      "name": "Prospecting - US - Women",
+      "status": "ACTIVE",
+      "optimization_goal": "PURCHASES",
+      "billing_event": "IMPRESSIONS",
+      "daily_budget": 120.0,
+      "lifetime_budget": null,
+      "start_time": "2026-08-29T12:00:00+00:00",
+      "end_time": null,
+      "targeting": {
+        "countries": [
+          "US"
+        ],
+        "age_min": 25,
+        "age_max": 45,
+        "genders": [
+          1
+        ],
+        "placements": [
+          "instagram",
+          "facebook_feed"
+        ]
+      }
+    },
+    {
+      "external_id": "238471222202",
+      "campaign_external_id": "238471111101",
+      "name": "Prospecting - US - Men",
+      "status": "ACTIVE",
+      "optimization_goal": "PURCHASES",
+      "billing_event": "IMPRESSIONS",
+      "daily_budget": 100.0,
+      "lifetime_budget": null,
+      "start_time": "2026-08-29T12:00:00+00:00",
+      "end_time": null,
+      "targeting": {
+        "countries": [
+          "US"
+        ],
+        "age_min": 18,
+        "age_max": 65,
+        "genders": [
+          2
+        ],
+        "placements": [
+          "instagram"
+        ]
+      }
+    },
+    {
+      "external_id": "238471222203",
+      "campaign_external_id": "238471111102",
+      "name": "Retargeting - All",
+      "status": "ACTIVE",
+      "optimization_goal": "PURCHASES",
+      "billing_event": "IMPRESSIONS",
+      "daily_budget": 80.0,
+      "lifetime_budget": null,
+      "start_time": "2026-09-28T12:00:00+00:00",
+      "end_time": null,
+      "targeting": {
+        "countries": [
+          "US"
+        ],
+        "placements": [
+          "facebook_feed",
+          "instagram"
+        ]
+      }
+    }
+  ],
+  "ads": [
+    {
+      "external_id": "238471444401",
+      "campaign_external_id": "238471111101",
+      "ad_group_external_id": "238471222201",
+      "name": "Ad - Summer Sale A - Women",
+      "status": "ACTIVE",
+      "creative_id": "238471333301",
+      "created_time": "2026-08-29T12:00:00+00:00",
+      "updated_time": "2026-10-27T12:00:00+00:00"
+    },
+    {
+      "external_id": "238471444402",
+      "campaign_external_id": "238471111101",
+      "ad_group_external_id": "238471222202",
+      "name": "Ad - Summer Sale B - Men",
+      "status": "ACTIVE",
+      "creative_id": "238471333302",
+      "created_time": "2026-08-29T12:00:00+00:00",
+      "updated_time": "2026-10-27T12:00:00+00:00"
+    },
+    {
+      "external_id": "238471444403",
+      "campaign_external_id": "238471111102",
+      "ad_group_external_id": "238471222203",
+      "name": "Ad - Retarget - A",
+      "status": "ACTIVE",
+      "creative_id": "238471333301",
+      "created_time": "2026-09-28T12:00:00+00:00",
+      "updated_time": "2026-10-27T12:00:00+00:00"
+    }
+  ],
+  "creatives": [
+    {
+      "external_id": "238471333301",
+      "name": "Creative - Summer Sale A",
+      "object_type": "VIDEO",
+      "title": "Summer Sale - 30% Off",
+      "body": "Limited time offer on all orders.",
+      "thumbnail_url": "https://cdn.example.test/thumb-a.jpg",
+      "image_url": null,
+      "video_id": "video-aaa",
+      "call_to_action": "SHOP_NOW",
+      "landing_page_url": "https://shop.example.test/?utm_source=meta&utm_campaign=sale",
+      "url_tags": "utm_source=meta&utm_campaign=sale"
+    },
+    {
+      "external_id": "238471333302",
+      "name": "Creative - Summer Sale B",
+      "object_type": "IMAGE",
+      "title": "New Collection",
+      "body": "Discover the new collection.",
+      "thumbnail_url": "https://cdn.example.test/thumb-b.jpg",
+      "image_url": "https://cdn.example.test/img-b.jpg",
+      "video_id": null,
+      "call_to_action": "LEARN_MORE",
+      "landing_page_url": "https://shop.example.test/?utm_source=meta&utm_campaign=collection",
+      "url_tags": null
+    }
+  ],
+  "performance": [
+    {
+      "date": "2026-10-26",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111101",
+      "impressions": 39499,
+      "reach": 33999,
+      "frequency": 1.59,
+      "clicks": 384,
+      "inline_link_clicks": 338,
+      "outbound_clicks": 176,
+      "spend": 116.0864,
+      "cpm": 2.939,
+      "cpc": 0.3023,
+      "ctr": 0.00972,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 384
+        },
+        {
+          "action_type": "purchase",
+          "value": 4
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 7
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 235.1269
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 29.0216
+        }
+      ],
+      "purchase_roas": 2.025,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 39499,
+            "clicks": 384,
+            "spend": 116.0864,
+            "platform_conversions": 4,
+            "platform_conversion_value": 235.1269
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 15799,
+            "clicks": 153,
+            "spend": 46.4346,
+            "platform_conversions": 1,
+            "platform_conversion_value": 94.0508
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111102",
+      "impressions": 19506,
+      "reach": 15467,
+      "frequency": 1.263,
+      "clicks": 106,
+      "inline_link_clicks": 77,
+      "outbound_clicks": 62,
+      "spend": 188.9914,
+      "cpm": 9.6889,
+      "cpc": 1.7829,
+      "ctr": 0.00543,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 106
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 2
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 119.3285
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 94.4957
+        }
+      ],
+      "purchase_roas": 0.631,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 19506,
+            "clicks": 106,
+            "spend": 188.9914,
+            "platform_conversions": 2,
+            "platform_conversion_value": 119.3285
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 7802,
+            "clicks": 42,
+            "spend": 75.5966,
+            "platform_conversions": 0,
+            "platform_conversion_value": 47.7314
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222201",
+      "impressions": 24393,
+      "reach": 21274,
+      "frequency": 1.522,
+      "clicks": 203,
+      "inline_link_clicks": 192,
+      "outbound_clicks": 87,
+      "spend": 188.3327,
+      "cpm": 7.7208,
+      "cpc": 0.9277,
+      "ctr": 0.00832,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 203
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 5
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 187.6008
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 62.7776
+        }
+      ],
+      "purchase_roas": 0.996,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 24393,
+            "clicks": 203,
+            "spend": 188.3327,
+            "platform_conversions": 3,
+            "platform_conversion_value": 187.6008
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 9757,
+            "clicks": 81,
+            "spend": 75.3331,
+            "platform_conversions": 1,
+            "platform_conversion_value": 75.0403
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222202",
+      "impressions": 27674,
+      "reach": 20822,
+      "frequency": 1.524,
+      "clicks": 256,
+      "inline_link_clicks": 204,
+      "outbound_clicks": 149,
+      "spend": 188.8024,
+      "cpm": 6.8224,
+      "cpc": 0.7375,
+      "ctr": 0.00925,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 256
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 4
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 196.4385
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 62.9341
+        }
+      ],
+      "purchase_roas": 1.04,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 27674,
+            "clicks": 256,
+            "spend": 188.8024,
+            "platform_conversions": 3,
+            "platform_conversion_value": 196.4385
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 11069,
+            "clicks": 102,
+            "spend": 75.521,
+            "platform_conversions": 1,
+            "platform_conversion_value": 78.5754
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222203",
+      "impressions": 48434,
+      "reach": 38856,
+      "frequency": 2.223,
+      "clicks": 444,
+      "inline_link_clicks": 370,
+      "outbound_clicks": 301,
+      "spend": 134.7161,
+      "cpm": 2.7814,
+      "cpc": 0.3034,
+      "ctr": 0.00917,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 444
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 1
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 116.7073
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 67.358
+        }
+      ],
+      "purchase_roas": 0.866,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 48434,
+            "clicks": 444,
+            "spend": 134.7161,
+            "platform_conversions": 2,
+            "platform_conversion_value": 116.7073
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 19373,
+            "clicks": 177,
+            "spend": 53.8864,
+            "platform_conversions": 0,
+            "platform_conversion_value": 46.6829
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD",
+      "external_entity_id": "238471444401",
+      "impressions": 45701,
+      "reach": 36505,
+      "frequency": 2.056,
+      "clicks": 269,
+      "inline_link_clicks": 229,
+      "outbound_clicks": 183,
+      "spend": 198.9739,
+      "cpm": 4.3538,
+      "cpc": 0.7397,
+      "ctr": 0.00589,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 269
+        },
+        {
+          "action_type": "purchase",
+          "value": 1
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 1
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 71.1873
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 198.9739
+        }
+      ],
+      "purchase_roas": 0.358,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 45701,
+            "clicks": 269,
+            "spend": 198.9739,
+            "platform_conversions": 1,
+            "platform_conversion_value": 71.1873
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 18280,
+            "clicks": 107,
+            "spend": 79.5895,
+            "platform_conversions": 0,
+            "platform_conversion_value": 28.4749
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD",
+      "external_entity_id": "238471444402",
+      "impressions": 47571,
+      "reach": 34399,
+      "frequency": 1.839,
+      "clicks": 220,
+      "inline_link_clicks": 189,
+      "outbound_clicks": 140,
+      "spend": 142.8218,
+      "cpm": 3.0023,
+      "cpc": 0.6492,
+      "ctr": 0.00462,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 220
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 3
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 211.4059
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 47.6073
+        }
+      ],
+      "purchase_roas": 1.48,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 47571,
+            "clicks": 220,
+            "spend": 142.8218,
+            "platform_conversions": 3,
+            "platform_conversion_value": 211.4059
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 19028,
+            "clicks": 88,
+            "spend": 57.1287,
+            "platform_conversions": 1,
+            "platform_conversion_value": 84.5624
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD",
+      "external_entity_id": "238471444403",
+      "impressions": 29087,
+      "reach": 23287,
+      "frequency": 2.134,
+      "clicks": 316,
+      "inline_link_clicks": 280,
+      "outbound_clicks": 136,
+      "spend": 117.9053,
+      "cpm": 4.0535,
+      "cpc": 0.3731,
+      "ctr": 0.01086,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 316
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 3
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 197.5957
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 39.3018
+        }
+      ],
+      "purchase_roas": 1.676,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 29087,
+            "clicks": 316,
+            "spend": 117.9053,
+            "platform_conversions": 3,
+            "platform_conversion_value": 197.5957
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 11634,
+            "clicks": 126,
+            "spend": 47.1621,
+            "platform_conversions": 1,
+            "platform_conversion_value": 79.0383
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111101",
+      "impressions": 28756,
+      "reach": 25325,
+      "frequency": 1.63,
+      "clicks": 178,
+      "inline_link_clicks": 152,
+      "outbound_clicks": 91,
+      "spend": 131.0461,
+      "cpm": 4.5572,
+      "cpc": 0.7362,
+      "ctr": 0.00619,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 178
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 4
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 170.2813
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 43.682
+        }
+      ],
+      "purchase_roas": 1.299,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 28756,
+            "clicks": 178,
+            "spend": 131.0461,
+            "platform_conversions": 3,
+            "platform_conversion_value": 170.2813
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 11502,
+            "clicks": 71,
+            "spend": 52.4184,
+            "platform_conversions": 1,
+            "platform_conversion_value": 68.1125
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111102",
+      "impressions": 20931,
+      "reach": 18823,
+      "frequency": 1.387,
+      "clicks": 101,
+      "inline_link_clicks": 86,
+      "outbound_clicks": 57,
+      "spend": 96.0016,
+      "cpm": 4.5866,
+      "cpc": 0.9505,
+      "ctr": 0.00483,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 101
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 6
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 142.5085
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 48.0008
+        }
+      ],
+      "purchase_roas": 1.484,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 20931,
+            "clicks": 101,
+            "spend": 96.0016,
+            "platform_conversions": 2,
+            "platform_conversion_value": 142.5085
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 8372,
+            "clicks": 40,
+            "spend": 38.4006,
+            "platform_conversions": 0,
+            "platform_conversion_value": 57.0034
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222201",
+      "impressions": 41382,
+      "reach": 35046,
+      "frequency": 1.339,
+      "clicks": 231,
+      "inline_link_clicks": 210,
+      "outbound_clicks": 125,
+      "spend": 162.5803,
+      "cpm": 3.9288,
+      "cpc": 0.7038,
+      "ctr": 0.00558,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 231
+        },
+        {
+          "action_type": "purchase",
+          "value": 1
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 5
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 56.4332
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 162.5803
+        }
+      ],
+      "purchase_roas": 0.347,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 41382,
+            "clicks": 231,
+            "spend": 162.5803,
+            "platform_conversions": 1,
+            "platform_conversion_value": 56.4332
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 16552,
+            "clicks": 92,
+            "spend": 65.0321,
+            "platform_conversions": 0,
+            "platform_conversion_value": 22.5733
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222202",
+      "impressions": 20563,
+      "reach": 15525,
+      "frequency": 1.962,
+      "clicks": 210,
+      "inline_link_clicks": 160,
+      "outbound_clicks": 141,
+      "spend": 186.8263,
+      "cpm": 9.0856,
+      "cpc": 0.8896,
+      "ctr": 0.01021,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 210
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 7
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 132.192
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 93.4132
+        }
+      ],
+      "purchase_roas": 0.708,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 20563,
+            "clicks": 210,
+            "spend": 186.8263,
+            "platform_conversions": 2,
+            "platform_conversion_value": 132.192
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 8225,
+            "clicks": 84,
+            "spend": 74.7305,
+            "platform_conversions": 0,
+            "platform_conversion_value": 52.8768
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222203",
+      "impressions": 32838,
+      "reach": 29458,
+      "frequency": 1.311,
+      "clicks": 249,
+      "inline_link_clicks": 207,
+      "outbound_clicks": 164,
+      "spend": 149.2429,
+      "cpm": 4.5448,
+      "cpc": 0.5994,
+      "ctr": 0.00758,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 249
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 5
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 148.3142
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 74.6215
+        }
+      ],
+      "purchase_roas": 0.994,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 32838,
+            "clicks": 249,
+            "spend": 149.2429,
+            "platform_conversions": 2,
+            "platform_conversion_value": 148.3142
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 13135,
+            "clicks": 99,
+            "spend": 59.6972,
+            "platform_conversions": 0,
+            "platform_conversion_value": 59.3257
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD",
+      "external_entity_id": "238471444401",
+      "impressions": 43443,
+      "reach": 34085,
+      "frequency": 2.226,
+      "clicks": 429,
+      "inline_link_clicks": 319,
+      "outbound_clicks": 176,
+      "spend": 84.1565,
+      "cpm": 1.9372,
+      "cpc": 0.1962,
+      "ctr": 0.00988,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 429
+        },
+        {
+          "action_type": "purchase",
+          "value": 1
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 6
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 55.5985
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 84.1565
+        }
+      ],
+      "purchase_roas": 0.661,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 43443,
+            "clicks": 429,
+            "spend": 84.1565,
+            "platform_conversions": 1,
+            "platform_conversion_value": 55.5985
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 17377,
+            "clicks": 171,
+            "spend": 33.6626,
+            "platform_conversions": 0,
+            "platform_conversion_value": 22.2394
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD",
+      "external_entity_id": "238471444402",
+      "impressions": 18628,
+      "reach": 16512,
+      "frequency": 1.623,
+      "clicks": 184,
+      "inline_link_clicks": 134,
+      "outbound_clicks": 112,
+      "spend": 136.9743,
+      "cpm": 7.3531,
+      "cpc": 0.7444,
+      "ctr": 0.00988,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 184
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 4
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 124.5091
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 68.4871
+        }
+      ],
+      "purchase_roas": 0.909,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 18628,
+            "clicks": 184,
+            "spend": 136.9743,
+            "platform_conversions": 2,
+            "platform_conversion_value": 124.5091
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 7451,
+            "clicks": 73,
+            "spend": 54.7897,
+            "platform_conversions": 0,
+            "platform_conversion_value": 49.8036
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD",
+      "external_entity_id": "238471444403",
+      "impressions": 36907,
+      "reach": 33137,
+      "frequency": 2.241,
+      "clicks": 280,
+      "inline_link_clicks": 222,
+      "outbound_clicks": 139,
+      "spend": 169.0054,
+      "cpm": 4.5792,
+      "cpc": 0.6036,
+      "ctr": 0.00759,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 280
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 5
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 132.2967
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 84.5027
+        }
+      ],
+      "purchase_roas": 0.783,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 36907,
+            "clicks": 280,
+            "spend": 169.0054,
+            "platform_conversions": 2,
+            "platform_conversion_value": 132.2967
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 14762,
+            "clicks": 112,
+            "spend": 67.6022,
+            "platform_conversions": 0,
+            "platform_conversion_value": 52.9187
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111101",
+      "impressions": 34702,
+      "reach": 29810,
+      "frequency": 1.132,
+      "clicks": 256,
+      "inline_link_clicks": 236,
+      "outbound_clicks": 112,
+      "spend": 87.3708,
+      "cpm": 2.5177,
+      "cpc": 0.3413,
+      "ctr": 0.00738,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 256
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 2
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 188.4516
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 29.1236
+        }
+      ],
+      "purchase_roas": 2.157,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 34702,
+            "clicks": 256,
+            "spend": 87.3708,
+            "platform_conversions": 3,
+            "platform_conversion_value": 188.4516
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 13880,
+            "clicks": 102,
+            "spend": 34.9483,
+            "platform_conversions": 1,
+            "platform_conversion_value": 75.3806
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "238471111102",
+      "impressions": 44798,
+      "reach": 33358,
+      "frequency": 2.183,
+      "clicks": 379,
+      "inline_link_clicks": 336,
+      "outbound_clicks": 264,
+      "spend": 191.0757,
+      "cpm": 4.2653,
+      "cpc": 0.5042,
+      "ctr": 0.00846,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 379
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 1
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 147.7933
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 95.5378
+        }
+      ],
+      "purchase_roas": 0.773,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 44798,
+            "clicks": 379,
+            "spend": 191.0757,
+            "platform_conversions": 2,
+            "platform_conversion_value": 147.7933
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 17919,
+            "clicks": 151,
+            "spend": 76.4303,
+            "platform_conversions": 0,
+            "platform_conversion_value": 59.1173
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222201",
+      "impressions": 35542,
+      "reach": 28154,
+      "frequency": 2.025,
+      "clicks": 342,
+      "inline_link_clicks": 245,
+      "outbound_clicks": 238,
+      "spend": 172.3606,
+      "cpm": 4.8495,
+      "cpc": 0.504,
+      "ctr": 0.00962,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 342
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 3
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 116.4362
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 86.1803
+        }
+      ],
+      "purchase_roas": 0.676,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 35542,
+            "clicks": 342,
+            "spend": 172.3606,
+            "platform_conversions": 2,
+            "platform_conversion_value": 116.4362
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 14216,
+            "clicks": 136,
+            "spend": 68.9442,
+            "platform_conversions": 0,
+            "platform_conversion_value": 46.5745
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222202",
+      "impressions": 36770,
+      "reach": 28943,
+      "frequency": 1.423,
+      "clicks": 382,
+      "inline_link_clicks": 295,
+      "outbound_clicks": 247,
+      "spend": 147.3396,
+      "cpm": 4.0071,
+      "cpc": 0.3857,
+      "ctr": 0.01039,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 382
+        },
+        {
+          "action_type": "purchase",
+          "value": 4
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 6
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 299.9619
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 36.8349
+        }
+      ],
+      "purchase_roas": 2.036,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 36770,
+            "clicks": 382,
+            "spend": 147.3396,
+            "platform_conversions": 4,
+            "platform_conversion_value": 299.9619
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 14708,
+            "clicks": 152,
+            "spend": 58.9358,
+            "platform_conversions": 1,
+            "platform_conversion_value": 119.9848
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "238471222203",
+      "impressions": 51441,
+      "reach": 43105,
+      "frequency": 1.868,
+      "clicks": 492,
+      "inline_link_clicks": 359,
+      "outbound_clicks": 236,
+      "spend": 94.7256,
+      "cpm": 1.8414,
+      "cpc": 0.1925,
+      "ctr": 0.00956,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 492
+        },
+        {
+          "action_type": "purchase",
+          "value": 2
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 2
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 133.5648
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 47.3628
+        }
+      ],
+      "purchase_roas": 1.41,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 51441,
+            "clicks": 492,
+            "spend": 94.7256,
+            "platform_conversions": 2,
+            "platform_conversion_value": 133.5648
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 20576,
+            "clicks": 196,
+            "spend": 37.8903,
+            "platform_conversions": 0,
+            "platform_conversion_value": 53.4259
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD",
+      "external_entity_id": "238471444401",
+      "impressions": 37631,
+      "reach": 28965,
+      "frequency": 1.834,
+      "clicks": 308,
+      "inline_link_clicks": 278,
+      "outbound_clicks": 190,
+      "spend": 118.6021,
+      "cpm": 3.1517,
+      "cpc": 0.3851,
+      "ctr": 0.00818,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 308
+        },
+        {
+          "action_type": "purchase",
+          "value": 4
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 5
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 257.9648
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 29.6505
+        }
+      ],
+      "purchase_roas": 2.175,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 37631,
+            "clicks": 308,
+            "spend": 118.6021,
+            "platform_conversions": 4,
+            "platform_conversion_value": 257.9648
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 15052,
+            "clicks": 123,
+            "spend": 47.4408,
+            "platform_conversions": 1,
+            "platform_conversion_value": 103.1859
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD",
+      "external_entity_id": "238471444402",
+      "impressions": 26235,
+      "reach": 20222,
+      "frequency": 2.18,
+      "clicks": 253,
+      "inline_link_clicks": 219,
+      "outbound_clicks": 163,
+      "spend": 118.7859,
+      "cpm": 4.5278,
+      "cpc": 0.4695,
+      "ctr": 0.00964,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 253
+        },
+        {
+          "action_type": "purchase",
+          "value": 4
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 1
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 246.5575
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 29.6965
+        }
+      ],
+      "purchase_roas": 2.076,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 26235,
+            "clicks": 253,
+            "spend": 118.7859,
+            "platform_conversions": 4,
+            "platform_conversion_value": 246.5575
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 10494,
+            "clicks": 101,
+            "spend": 47.5144,
+            "platform_conversions": 1,
+            "platform_conversion_value": 98.623
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD",
+      "external_entity_id": "238471444403",
+      "impressions": 41970,
+      "reach": 30536,
+      "frequency": 1.848,
+      "clicks": 397,
+      "inline_link_clicks": 278,
+      "outbound_clicks": 173,
+      "spend": 193.966,
+      "cpm": 4.6215,
+      "cpc": 0.4886,
+      "ctr": 0.00946,
+      "actions": [
+        {
+          "action_type": "link_click",
+          "value": 397
+        },
+        {
+          "action_type": "purchase",
+          "value": 3
+        },
+        {
+          "action_type": "add_to_cart",
+          "value": 4
+        }
+      ],
+      "action_values": [
+        {
+          "action_type": "purchase",
+          "value": 179.2399
+        }
+      ],
+      "cost_per_action_type": [
+        {
+          "action_type": "purchase",
+          "value": 64.6553
+        }
+      ],
+      "purchase_roas": 0.924,
+      "currency": "USD",
+      "attribution_setting": "7d_click",
+      "breakdowns": {
+        "country": [
+          {
+            "breakdown_value": "US",
+            "impressions": 41970,
+            "clicks": 397,
+            "spend": 193.966,
+            "platform_conversions": 3,
+            "platform_conversion_value": 179.2399
+          }
+        ],
+        "age": [
+          {
+            "breakdown_value": "25-34",
+            "impressions": 16788,
+            "clicks": 158,
+            "spend": 77.5864,
+            "platform_conversions": 1,
+            "platform_conversion_value": 71.6959
+          }
+        ]
+      }
+    }
+  ],
+  "scenario": "schema_drift"
+}

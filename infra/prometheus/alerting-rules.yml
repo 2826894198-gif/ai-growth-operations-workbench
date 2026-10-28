@@ -1,0 +1,38 @@
+groups:
+  - name: growth-system
+    rules:
+      - alert: ExecutionVerificationFailureSpike
+        expr: growth_execution_verification_failure_total[5m] > 3
+        labels:
+          severity: P1
+        annotations:
+          summary: "Execution verification failure spike"
+          runbook: "docs/runbooks/execution-incident.md"
+      - alert: UnknownProviderOutcomeSpike
+        expr: growth_execution_unknown_outcome_total[10m] > 3
+        labels:
+          severity: P1
+        annotations:
+          summary: "Unknown provider outcome spike"
+          runbook: "docs/runbooks/execution-incident.md"
+      - alert: BackupStale
+        expr: time() - growth_backup_last_success > 24 * 3600
+        labels:
+          severity: P2
+        annotations:
+          summary: "No successful backup within 24h"
+          runbook: "docs/runbooks/database-backup.md"
+      - alert: IngestionStale
+        expr: growth_ingestion_freshness_seconds > 20 * 60
+        labels:
+          severity: P2
+        annotations:
+          summary: "Meta/Google ingestion data stale"
+          runbook: "docs/runbooks/deploy.md"
+      - alert: OAuthRefreshFailures
+        expr: growth_connection_reauth_required_total[1h] > 3
+        labels:
+          severity: P2
+        annotations:
+          summary: "OAuth refresh failures"
+          runbook: "docs/runbooks/oauth-reauthorization.md"

@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "performance_numeric_accuracy",
+    "agent_type": "performance",
+    "expected_facts": [{"key": "primary_driver", "value": "funnel/checkout"}],
+    "expected_tools": ["get_entity_rule_findings", "get_funnel_performance"],
+    "used_tools": ["get_entity_rule_findings", "get_funnel_performance", "get_campaign_performance"],
+    "forbidden_tools": ["public_page_snapshot"],
+    "output": {
+      "entity": "campaign",
+      "status": "DEGRADED",
+      "primary_driver": "funnel/checkout",
+      "secondary_drivers": ["creative fatigue possible"],
+      "evidence": [{"metric": "checkout_to_purchase_7d", "source_ref": "metric://campaign/c1/checkout"}],
+      "confidence": 0.7
+    }
+  },
+  {
+    "case_id": "performance_no_fabricated_roas",
+    "agent_type": "performance",
+    "expected_facts": [],
+    "expected_tools": ["get_campaign_performance"],
+    "used_tools": ["get_campaign_performance"],
+    "forbidden_tools": ["run_sql"],
+    "output": {
+      "entity": "campaign",
+      "status": "UNKNOWN",
+      "primary_driver": "data_insufficient",
+      "evidence": []
+    }
+  }
+]

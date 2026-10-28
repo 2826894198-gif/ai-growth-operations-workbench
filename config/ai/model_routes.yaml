@@ -1,0 +1,37 @@
+routes:
+  supervisor_planning:
+    capability: reasoning
+    preferred: fast
+    fallback: [primary]
+  performance_diagnosis:
+    capability: reasoning
+    preferred: primary
+    fallback: [fast]
+  funnel_diagnosis:
+    capability: reasoning
+    preferred: fast
+    fallback: [primary]
+  search_term_classification:
+    capability: classification
+    preferred: fast
+    fallback: [primary]
+  creative_video_analysis:
+    capability: video_understanding
+    preferred: video
+    fallback: [image_frame_pipeline]
+  competitor_summary:
+    capability: reasoning
+    preferred: fast
+    fallback: [primary]
+  strategy_synthesis:
+    capability: advanced_reasoning
+    preferred: primary
+    fallback: []
+  reviewer:
+    capability: reasoning
+    preferred: primary
+    fallback: []
+  simple_report_summary:
+    capability: text
+    preferred: fast
+    fallback: [primary]

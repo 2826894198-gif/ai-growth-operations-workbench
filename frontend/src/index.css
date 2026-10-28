@@ -1,0 +1,530 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Light theme design systems.
+ * slate-950 = page background · slate-900 = card · slate-800 = border
+ * slate-700 = border strong · slate-500/600 = muted text · slate-100 = headings
+ */
+
+:root,
+:root[data-theme="deepseek"] {
+  --card-shadow: 0 1px 2px rgba(15, 17, 21, 0.04), 0 2px 8px rgba(15, 17, 21, 0.05);
+  --sidebar-bg: 249 250 251;
+  --sidebar-fg: 71 85 105;
+  --sidebar-muted: 107 114 128;
+  --sidebar-hover-bg: 229 231 235 / 0.55;
+  --sidebar-active-bg: 57 100 254 / 0.08;
+  --sidebar-active-fg: 57 100 254;
+  --sidebar-border: 229 231 235;
+  --c-slate-50: 0 0 0;
+  --c-slate-100: 15 17 21;
+  --c-slate-200: 30 41 59;
+  --c-slate-300: 51 65 85;
+  --c-slate-400: 75 85 99;
+  --c-slate-500: 107 114 128;
+  --c-slate-600: 156 163 175;
+  --c-slate-700: 209 213 219;
+  --c-slate-800: 229 231 235;
+  --c-slate-900: 249 250 251;
+  --c-slate-950: 255 255 255;
+
+  --c-sky-50: 10 25 90;
+  --c-sky-100: 20 45 160;
+  --c-sky-200: 30 66 220;
+  --c-sky-300: 37 84 240;
+  --c-sky-400: 57 100 254;
+  --c-sky-500: 59 130 246;
+  --c-sky-600: 79 120 255;
+  --c-sky-700: 96 144 255;
+  --c-sky-800: 147 182 255;
+  --c-sky-900: 219 234 254;
+  --c-sky-950: 239 246 255;
+
+  --c-emerald-50: 6 34 12;
+  --c-emerald-100: 12 60 22;
+  --c-emerald-200: 16 92 26;
+  --c-emerald-300: 12 118 26;
+  --c-emerald-400: 6 150 22;
+  --c-emerald-500: 0 188 12;
+  --c-emerald-600: 30 190 70;
+  --c-emerald-700: 80 210 110;
+  --c-emerald-800: 160 236 176;
+  --c-emerald-900: 200 244 208;
+  --c-emerald-950: 220 250 224;
+
+  --c-amber-50: 40 24 4;
+  --c-amber-100: 70 40 6;
+  --c-amber-200: 110 62 8;
+  --c-amber-300: 145 82 10;
+  --c-amber-400: 180 105 15;
+  --c-amber-500: 217 130 18;
+  --c-amber-600: 245 160 40;
+  --c-amber-700: 250 190 90;
+  --c-amber-800: 253 218 150;
+  --c-amber-900: 254 238 205;
+  --c-amber-950: 255 248 236;
+
+  --c-rose-50: 42 4 8;
+  --c-rose-100: 75 8 14;
+  --c-rose-200: 125 14 24;
+  --c-rose-300: 160 18 32;
+  --c-rose-400: 200 25 42;
+  --c-rose-500: 230 40 60;
+  --c-rose-600: 248 70 90;
+  --c-rose-700: 252 130 140;
+  --c-rose-800: 254 185 190;
+  --c-rose-900: 255 220 222;
+  --c-rose-950: 255 240 241;
+
+  --c-orange-50: 40 18 3;
+  --c-orange-100: 70 32 6;
+  --c-orange-200: 115 52 10;
+  --c-orange-300: 150 68 12;
+  --c-orange-400: 190 88 15;
+  --c-orange-500: 230 110 22;
+  --c-orange-600: 250 140 50;
+  --c-orange-700: 252 175 95;
+  --c-orange-800: 254 210 150;
+  --c-orange-900: 255 234 205;
+  --c-orange-950: 255 247 238;
+
+  --c-violet-50: 25 20 60;
+  --c-violet-100: 45 36 110;
+  --c-violet-200: 65 55 150;
+  --c-violet-300: 90 75 190;
+  --c-violet-400: 110 90 220;
+  --c-violet-500: 130 105 245;
+  --c-violet-600: 155 135 250;
+  --c-violet-700: 190 175 253;
+  --c-violet-800: 220 210 255;
+  --c-violet-900: 238 233 255;
+  --c-violet-950: 247 245 255;
+}
+
+:root[data-theme="vercel"] {
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sidebar-bg: 250 250 250;
+  --sidebar-fg: 107 114 128;
+  --sidebar-muted: 75 85 99;
+  --sidebar-hover-bg: 234 234 234;
+  --sidebar-active-bg: 234 234 234;
+  --sidebar-active-fg: 0 0 0;
+  --sidebar-border: 212 212 212;
+  --c-slate-50: 0 0 0;
+  --c-slate-100: 0 0 0;
+  --c-slate-200: 10 10 10;
+  --c-slate-300: 23 23 23;
+  --c-slate-400: 64 64 64;
+  --c-slate-500: 115 115 115;
+  --c-slate-600: 163 163 163;
+  --c-slate-700: 212 212 212;
+  --c-slate-800: 234 234 234;
+  --c-slate-900: 255 255 255;
+  --c-slate-950: 250 250 250;
+  --c-sky-50: 2 6 23;
+  --c-sky-100: 10 30 70;
+  --c-sky-200: 12 50 105;
+  --c-sky-300: 0 74 155;
+  --c-sky-400: 0 102 224;
+  --c-sky-500: 0 112 243;
+  --c-sky-600: 37 135 255;
+  --c-sky-700: 120 180 255;
+  --c-sky-800: 190 222 255;
+  --c-sky-900: 225 240 255;
+  --c-sky-950: 240 248 255;
+  --c-emerald-50: 4 20 12;
+  --c-emerald-100: 6 40 24;
+  --c-emerald-200: 8 64 40;
+  --c-emerald-300: 10 88 55;
+  --c-emerald-400: 12 115 72;
+  --c-emerald-500: 18 150 95;
+  --c-emerald-600: 35 175 120;
+  --c-emerald-700: 80 205 150;
+  --c-emerald-800: 150 230 195;
+  --c-emerald-900: 215 245 230;
+  --c-emerald-950: 238 251 244;
+  --c-amber-50: 40 24 4;
+  --c-amber-100: 70 40 6;
+  --c-amber-200: 110 62 8;
+  --c-amber-300: 145 82 10;
+  --c-amber-400: 180 105 15;
+  --c-amber-500: 217 130 18;
+  --c-amber-600: 245 160 40;
+  --c-amber-700: 250 190 90;
+  --c-amber-800: 253 218 150;
+  --c-amber-900: 254 238 205;
+  --c-amber-950: 255 248 236;
+  --c-rose-50: 42 4 8;
+  --c-rose-100: 75 8 14;
+  --c-rose-200: 125 14 24;
+  --c-rose-300: 160 18 32;
+  --c-rose-400: 200 25 42;
+  --c-rose-500: 230 40 60;
+  --c-rose-600: 248 70 90;
+  --c-rose-700: 252 130 140;
+  --c-rose-800: 254 185 190;
+  --c-rose-900: 255 220 222;
+  --c-rose-950: 255 240 241;
+  --c-orange-50: 40 18 3;
+  --c-orange-100: 70 32 6;
+  --c-orange-200: 115 52 10;
+  --c-orange-300: 150 68 12;
+  --c-orange-400: 190 88 15;
+  --c-orange-500: 230 110 22;
+  --c-orange-600: 250 140 50;
+  --c-orange-700: 252 175 95;
+  --c-orange-800: 254 210 150;
+  --c-orange-900: 255 234 205;
+  --c-orange-950: 255 247 238;
+  --c-violet-50: 25 20 60;
+  --c-violet-100: 45 36 110;
+  --c-violet-200: 65 55 150;
+  --c-violet-300: 90 75 190;
+  --c-violet-400: 110 90 220;
+  --c-violet-500: 130 105 245;
+  --c-violet-600: 155 135 250;
+  --c-violet-700: 190 175 253;
+  --c-violet-800: 220 210 255;
+  --c-violet-900: 238 233 255;
+  --c-violet-950: 247 245 255;
+}
+
+:root[data-theme="linear"] {
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.03);
+  --sidebar-bg: 247 247 248;
+  --sidebar-fg: 113 113 122;
+  --sidebar-muted: 82 82 91;
+  --sidebar-hover-bg: 230 230 232;
+  --sidebar-active-bg: 230 230 232;
+  --sidebar-active-fg: 24 24 26;
+  --sidebar-border: 212 212 216;
+  --c-slate-50: 12 12 13;
+  --c-slate-100: 24 24 26;
+  --c-slate-200: 39 39 45;
+  --c-slate-300: 58 58 66;
+  --c-slate-400: 82 82 91;
+  --c-slate-500: 113 113 122;
+  --c-slate-600: 160 160 166;
+  --c-slate-700: 212 212 216;
+  --c-slate-800: 230 230 232;
+  --c-slate-900: 255 255 255;
+  --c-slate-950: 247 247 248;
+
+  --c-sky-50: 8 12 32;
+  --c-sky-100: 18 28 72;
+  --c-sky-200: 28 48 110;
+  --c-sky-300: 45 72 155;
+  --c-sky-400: 65 96 200;
+  --c-sky-500: 90 120 230;
+  --c-sky-600: 115 145 240;
+  --c-sky-700: 160 180 248;
+  --c-sky-800: 205 218 252;
+  --c-sky-900: 232 238 255;
+  --c-sky-950: 244 248 255;
+
+  --c-emerald-50: 3 22 14;
+  --c-emerald-100: 5 42 28;
+  --c-emerald-200: 8 64 44;
+  --c-emerald-300: 10 86 60;
+  --c-emerald-400: 12 112 78;
+  --c-emerald-500: 20 140 100;
+  --c-emerald-600: 45 170 125;
+  --c-emerald-700: 95 205 160;
+  --c-emerald-800: 160 230 200;
+  --c-emerald-900: 220 246 234;
+  --c-emerald-950: 240 252 246;
+
+  --c-amber-50: 38 24 4;
+  --c-amber-100: 66 40 6;
+  --c-amber-200: 104 62 10;
+  --c-amber-300: 138 82 14;
+  --c-amber-400: 172 104 20;
+  --c-amber-500: 210 130 28;
+  --c-amber-600: 240 160 55;
+  --c-amber-700: 248 195 105;
+  --c-amber-800: 252 224 160;
+  --c-amber-900: 254 240 212;
+  --c-amber-950: 255 249 240;
+
+  --c-rose-50: 42 4 8;
+  --c-rose-100: 76 8 14;
+  --c-rose-200: 126 14 24;
+  --c-rose-300: 162 18 32;
+  --c-rose-400: 202 25 42;
+  --c-rose-500: 232 42 60;
+  --c-rose-600: 250 75 92;
+  --c-rose-700: 253 135 145;
+  --c-rose-800: 255 188 193;
+  --c-rose-900: 255 224 226;
+  --c-rose-950: 255 242 243;
+
+  --c-orange-50: 42 16 2;
+  --c-orange-100: 74 28 6;
+  --c-orange-200: 120 46 10;
+  --c-orange-300: 156 62 14;
+  --c-orange-400: 198 82 20;
+  --c-orange-500: 235 108 28;
+  --c-orange-600: 250 140 60;
+  --c-orange-700: 253 180 110;
+  --c-orange-800: 254 214 165;
+  --c-orange-900: 255 236 215;
+  --c-orange-950: 255 248 240;
+
+  --c-violet-50: 22 22 52;
+  --c-violet-100: 42 42 92;
+  --c-violet-200: 62 64 132;
+  --c-violet-300: 82 86 172;
+  --c-violet-400: 94 106 210;
+  --c-violet-500: 104 118 235;
+  --c-violet-600: 128 140 245;
+  --c-violet-700: 168 178 250;
+  --c-violet-800: 210 216 254;
+  --c-violet-900: 234 237 255;
+  --c-violet-950: 245 246 255;
+}
+
+:root[data-theme="notion"] {
+  --card-shadow: 0 1px 2px rgba(15, 15, 15, 0.04);
+  --sidebar-bg: 247 246 243;
+  --sidebar-fg: 120 119 116;
+  --sidebar-muted: 91 90 87;
+  --sidebar-hover-bg: 233 233 231;
+  --sidebar-active-bg: 233 233 231;
+  --sidebar-active-fg: 40 38 33;
+  --sidebar-border: 221 220 217;
+  --c-slate-50: 25 23 21;
+  --c-slate-100: 40 38 33;
+  --c-slate-200: 55 53 47;
+  --c-slate-300: 68 67 63;
+  --c-slate-400: 91 90 87;
+  --c-slate-500: 120 119 116;
+  --c-slate-600: 155 154 151;
+  --c-slate-700: 221 220 217;
+  --c-slate-800: 233 233 231;
+  --c-slate-900: 255 255 255;
+  --c-slate-950: 255 255 255;
+
+  --c-sky-50: 4 16 30;
+  --c-sky-100: 10 38 70;
+  --c-sky-200: 16 60 108;
+  --c-sky-300: 24 88 150;
+  --c-sky-400: 31 116 201;
+  --c-sky-500: 35 131 226;
+  --c-sky-600: 66 150 235;
+  --c-sky-700: 130 190 245;
+  --c-sky-800: 190 222 250;
+  --c-sky-900: 226 242 254;
+  --c-sky-950: 242 249 255;
+
+  --c-emerald-50: 4 20 12;
+  --c-emerald-100: 8 42 26;
+  --c-emerald-200: 12 68 42;
+  --c-emerald-300: 18 92 56;
+  --c-emerald-400: 24 118 72;
+  --c-emerald-500: 34 145 92;
+  --c-emerald-600: 62 175 118;
+  --c-emerald-700: 120 208 160;
+  --c-emerald-800: 185 234 210;
+  --c-emerald-900: 228 247 238;
+  --c-emerald-950: 243 251 247;
+
+  --c-amber-50: 36 22 4;
+  --c-amber-100: 62 38 6;
+  --c-amber-200: 100 60 10;
+  --c-amber-300: 132 80 16;
+  --c-amber-400: 166 104 22;
+  --c-amber-500: 206 132 34;
+  --c-amber-600: 240 165 70;
+  --c-amber-700: 248 202 120;
+  --c-amber-800: 252 228 175;
+  --c-amber-900: 254 242 220;
+  --c-amber-950: 255 249 240;
+
+  --c-rose-50: 40 6 10;
+  --c-rose-100: 72 10 18;
+  --c-rose-200: 120 16 30;
+  --c-rose-300: 155 22 40;
+  --c-rose-400: 194 30 52;
+  --c-rose-500: 226 50 74;
+  --c-rose-600: 248 90 110;
+  --c-rose-700: 252 150 160;
+  --c-rose-800: 255 200 205;
+  --c-rose-900: 255 230 232;
+  --c-rose-950: 255 245 246;
+
+  --c-orange-50: 40 16 3;
+  --c-orange-100: 70 28 6;
+  --c-orange-200: 112 46 10;
+  --c-orange-300: 148 62 14;
+  --c-orange-400: 188 84 20;
+  --c-orange-500: 226 108 30;
+  --c-orange-600: 248 140 65;
+  --c-orange-700: 252 182 115;
+  --c-orange-800: 254 218 170;
+  --c-orange-900: 255 238 215;
+  --c-orange-950: 255 248 240;
+
+  --c-violet-50: 22 20 46;
+  --c-violet-100: 40 38 84;
+  --c-violet-200: 60 58 124;
+  --c-violet-300: 84 80 165;
+  --c-violet-400: 106 100 205;
+  --c-violet-500: 126 118 235;
+  --c-violet-600: 152 144 246;
+  --c-violet-700: 196 190 252;
+  --c-violet-800: 224 220 255;
+  --c-violet-900: 240 238 255;
+  --c-violet-950: 248 247 255;
+}
+
+:root[data-theme="stripe"] {
+  --card-shadow: 0 1px 2px rgba(50, 50, 93, 0.06), 0 4px 12px rgba(50, 50, 93, 0.06);
+  --sidebar-bg: 246 249 252;
+  --sidebar-fg: 125 142 158;
+  --sidebar-muted: 92 108 124;
+  --sidebar-hover-bg: 230 237 243;
+  --sidebar-active-bg: 230 237 243;
+  --sidebar-active-fg: 10 37 64;
+  --sidebar-border: 214 223 231;
+  --c-slate-50: 5 20 40;
+  --c-slate-100: 10 37 64;
+  --c-slate-200: 48 56 74;
+  --c-slate-300: 70 84 100;
+  --c-slate-400: 92 108 124;
+  --c-slate-500: 125 142 158;
+  --c-slate-600: 176 190 202;
+  --c-slate-700: 214 223 231;
+  --c-slate-800: 230 237 243;
+  --c-slate-900: 255 255 255;
+  --c-slate-950: 246 249 252;
+
+  --c-sky-50: 4 12 28;
+  --c-sky-100: 10 34 66;
+  --c-sky-200: 14 58 108;
+  --c-sky-300: 18 86 152;
+  --c-sky-400: 22 112 196;
+  --c-sky-500: 26 132 232;
+  --c-sky-600: 60 155 245;
+  --c-sky-700: 125 190 250;
+  --c-sky-800: 190 222 254;
+  --c-sky-900: 226 242 255;
+  --c-sky-950: 242 249 255;
+
+  --c-emerald-50: 3 22 14;
+  --c-emerald-100: 6 44 28;
+  --c-emerald-200: 10 70 44;
+  --c-emerald-300: 14 94 58;
+  --c-emerald-400: 20 122 76;
+  --c-emerald-500: 30 150 96;
+  --c-emerald-600: 58 182 122;
+  --c-emerald-700: 115 214 160;
+  --c-emerald-800: 180 236 205;
+  --c-emerald-900: 225 248 235;
+  --c-emerald-950: 241 252 246;
+
+  --c-amber-50: 38 22 4;
+  --c-amber-100: 64 38 6;
+  --c-amber-200: 102 60 10;
+  --c-amber-300: 134 80 16;
+  --c-amber-400: 168 104 22;
+  --c-amber-500: 208 132 34;
+  --c-amber-600: 242 166 70;
+  --c-amber-700: 250 204 120;
+  --c-amber-800: 253 230 175;
+  --c-amber-900: 254 243 220;
+  --c-amber-950: 255 250 240;
+
+  --c-rose-50: 42 4 8;
+  --c-rose-100: 76 8 14;
+  --c-rose-200: 126 14 24;
+  --c-rose-300: 162 18 32;
+  --c-rose-400: 202 25 42;
+  --c-rose-500: 232 42 60;
+  --c-rose-600: 250 75 92;
+  --c-rose-700: 253 135 145;
+  --c-rose-800: 255 188 193;
+  --c-rose-900: 255 224 226;
+  --c-rose-950: 255 242 243;
+
+  --c-orange-50: 42 16 2;
+  --c-orange-100: 74 28 6;
+  --c-orange-200: 120 46 10;
+  --c-orange-300: 156 62 14;
+  --c-orange-400: 198 82 20;
+  --c-orange-500: 235 108 28;
+  --c-orange-600: 250 140 60;
+  --c-orange-700: 253 180 110;
+  --c-orange-800: 254 214 165;
+  --c-orange-900: 255 236 215;
+  --c-orange-950: 255 248 240;
+
+  --c-violet-50: 24 20 60;
+  --c-violet-100: 44 38 110;
+  --c-violet-200: 64 58 150;
+  --c-violet-300: 84 80 190;
+  --c-violet-400: 99 91 255;
+  --c-violet-500: 106 99 255;
+  --c-violet-600: 130 124 255;
+  --c-violet-700: 175 170 255;
+  --c-violet-800: 215 212 255;
+  --c-violet-900: 236 234 255;
+  --c-violet-950: 247 246 255;
+}
+
+/* Card depth: each design system defines its own shadow. */
+.rounded-xl {
+  box-shadow: var(--card-shadow, none);
+}
+
+/* Sidebar separation */
+aside {
+  background-color: rgb(var(--sidebar-bg, var(--c-slate-900)));
+}
+
+/* Tables get their own gray depth inside card sections */
+table {
+  box-shadow: 0 1px 3px rgba(15, 17, 21, 0.05);
+  border-radius: 0.5rem;
+}
+
+/* Table differentiation: visible header band + row hover */
+thead th {
+  color: rgb(var(--c-slate-400));
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: rgb(var(--c-slate-900));
+  border-bottom: 1px solid rgb(var(--c-slate-800));
+}
+td {
+  border-bottom: 1px solid rgb(var(--c-slate-800));
+}
+tbody tr:hover {
+  background-color: rgb(var(--c-slate-900));
+}
+
+/* Disabled controls must look disabled */
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled,
+[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}

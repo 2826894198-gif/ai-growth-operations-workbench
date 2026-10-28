@@ -1,0 +1,28 @@
+{
+  "name": "Google conversion collapse with stable Shopify orders is a tracking issue",
+  "rule": {
+    "rule_key": "GOOGLE_CONVERSION_TRACKING_ANOMALY",
+    "version": 1,
+    "category": "ANOMALY",
+    "platform": "GOOGLE",
+    "evaluation_level": "CAMPAIGN",
+    "severity": "HIGH",
+    "guards": {},
+    "conditions": {"all": [{"metric": "conversion_tracking_anomaly", "operator": "eq", "value": true}]},
+    "action": {"type": "CHECK_TRACKING", "reason": "TRACKING_ANOMALY", "risk": "MEDIUM"},
+    "cooldown_minutes": 360
+  },
+  "context": {
+    "metrics": {"conversion_tracking_anomaly": true, "clicks_7d": 300, "spend_7d": 150, "purchases_7d": 0, "entity_age_hours": 300},
+    "business_targets": {},
+    "data_freshness_minutes": 6,
+    "entity_age_hours": 300,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 1, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "CHECK_TRACKING", "severity": "HIGH", "confidence_band": "MEDIUM"}
+}

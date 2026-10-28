@@ -1,0 +1,22 @@
+daily_growth_review:
+  required: [performance]
+  conditional:
+    creative:
+      when: [creative_rule_triggered, meta_performance_deterioration]
+    search:
+      when: [google_search_active, search_term_rule_triggered]
+    funnel:
+      when: [funnel_rule_triggered, high_click_low_purchase]
+    competitor:
+      when: [explicitly_requested]
+weekly_growth_review:
+  required: [performance, strategy, reviewer]
+  conditional:
+    creative:
+      when: [creative_rule_triggered, meta_active]
+    search:
+      when: [google_search_active]
+    funnel:
+      when: [funnel_rule_triggered]
+    competitor:
+      when: [weekly_market_review, explicitly_requested]

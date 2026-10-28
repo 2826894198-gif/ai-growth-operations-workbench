@@ -1,0 +1,139 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: growth
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-growth}
+      POSTGRES_DB: growth
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U growth -d growth"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./infra/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - path: ${ENV_FILE:-config/env/local.env.example}
+        required: true
+    environment:
+      DATABASE_URL: postgresql+asyncpg://growth:${POSTGRES_PASSWORD:-growth}@db:5432/growth
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: ${APP_ENV:-local}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - data
+      - edge
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ./frontend
+      target: runtime
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      - backend
+    networks:
+      - edge
+    restart: unless-stopped
+
+  execution-worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["python", "-m", "app.execution.worker", "--concurrency", "2"]
+    env_file:
+      - path: ${ENV_FILE:-config/env/local.env.example}
+        required: true
+    environment:
+      DATABASE_URL: postgresql+asyncpg://growth:${POSTGRES_PASSWORD:-growth}@db:5432/growth
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: ${APP_ENV:-local}
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - data
+      - execution
+    restart: unless-stopped
+
+  seed-demo:
+    profiles: ["tools"]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command:
+      - sh
+      - -c
+      - >-
+        python scripts/seed_demo_data.py &&
+        RULE_STATUS=SHADOW RULE_FORCE_STATUS=1 python scripts/rules_load.py &&
+        python scripts/seed_ai_demo.py &&
+        python scripts/seed_product_demo.py &&
+        python scripts/seed_social_demo.py &&
+        python scripts/seed_governance.py
+    env_file:
+      - path: ${ENV_FILE:-config/env/local.env.example}
+        required: true
+    environment:
+      DATABASE_URL: postgresql+asyncpg://growth:${POSTGRES_PASSWORD:-growth}@db:5432/growth
+      REDIS_URL: redis://redis:6379/0
+      APP_ENV: local
+      DATA_PROVIDER_MODE: mock
+      SOCIAL_PROVIDER_MODE: mock
+      AI_PROVIDER_MODE: mock
+      RULE_ENGINE_MODE: shadow
+      EXECUTION_ENABLED: "false"
+      META_WRITE_ENABLED: "false"
+      GOOGLE_ADS_WRITE_ENABLED: "false"
+      ALLOW_LIVE_EXECUTION_TESTS: "false"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - data
+      - edge
+    restart: "no"
+
+networks:
+  edge:
+  data:
+  execution:
+    internal: true
+
+volumes:
+  pgdata:
+  redisdata:

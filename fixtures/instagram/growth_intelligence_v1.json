@@ -1,0 +1,328 @@
+{
+  "fixture_version": "instagram-growth-intelligence-v1.0",
+  "generated_at": "2026-08-01T00:00:00Z",
+  "source_mode": "DEMO",
+  "accounts": [
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_account_id": "17841400000000001",
+      "username": "demo_growth_brand_1",
+      "display_name": "DEMO Growth Brand 1",
+      "avatar_url": "https://example.invalid/fixtures/instagram/avatar-001.png",
+      "followers_count": 12500,
+      "media_count": 36,
+      "account_type": "CREATOR",
+      "connected_at": "2026-06-01T00:00:00Z",
+      "last_sync": "2026-08-01T00:00:00Z",
+      "timezone": "America/Los_Angeles",
+      "source_mode": "DEMO",
+      "data_layer": "RAW"
+    }
+  ],
+  "capabilities": [
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "reach",
+      "metric_level": "ACCOUNT",
+      "supported": true,
+      "permission_granted": true,
+      "reason": "available",
+      "provider_field": "reach",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "website_clicks",
+      "metric_level": "ACCOUNT",
+      "supported": true,
+      "permission_granted": true,
+      "reason": "available",
+      "provider_field": "website_clicks",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "profile_links_taps",
+      "metric_level": "ACCOUNT",
+      "supported": false,
+      "permission_granted": true,
+      "reason": "unsupported",
+      "provider_field": "profile_links_taps",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "audience_age",
+      "metric_level": "AUDIENCE",
+      "supported": true,
+      "permission_granted": false,
+      "reason": "permission_denied",
+      "provider_field": "audience_age",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "reach",
+      "metric_level": "MEDIA",
+      "media_type": "REELS",
+      "supported": true,
+      "permission_granted": true,
+      "reason": "available",
+      "provider_field": "reach",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "average_watch_time",
+      "metric_level": "MEDIA",
+      "media_type": "REELS",
+      "supported": true,
+      "permission_granted": true,
+      "reason": "available",
+      "provider_field": "ig_reels_avg_watch_time",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "metric_key": "replays",
+      "metric_level": "MEDIA",
+      "media_type": "REELS",
+      "supported": false,
+      "permission_granted": true,
+      "reason": "unsupported",
+      "provider_field": "replays",
+      "provider_version": "v26.0",
+      "last_checked_at": "2026-08-01T00:00:00Z"
+    }
+  ],
+  "account_snapshots": [
+    {
+      "account_ref": "ig_demo_account_001",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "window_start": "2026-07-05",
+      "window_end": "2026-08-01",
+      "source_mode": "DEMO",
+      "api_version": "v26.0",
+      "raw_payload_ref": "fixture:instagram:account:2026-08-01",
+      "timezone": "America/Los_Angeles",
+      "metrics": {
+        "follower_count": 12500,
+        "reach": 42000,
+        "profile_views": 2100,
+        "website_clicks": 312,
+        "profile_links_taps": null,
+        "accounts_engaged": 6800,
+        "total_interactions": 8300,
+        "likes": 6000,
+        "comments": 420,
+        "shares": 550,
+        "saved": 1330,
+        "follows": 940,
+        "unfollows": 280
+      },
+      "metric_availability": {
+        "follower_count": "available",
+        "reach": "available",
+        "profile_views": "available",
+        "website_clicks": "available",
+        "profile_links_taps": "unsupported",
+        "accounts_engaged": "available",
+        "total_interactions": "available",
+        "likes": "available",
+        "comments": "available",
+        "shares": "available",
+        "saved": "available",
+        "follows": "available",
+        "unfollows": "available"
+      },
+      "record_status": "COMPLETE",
+      "source_layer": "RAW"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "observed_at": "2026-07-04T00:00:00Z",
+      "window_start": "2026-06-07",
+      "window_end": "2026-07-04",
+      "source_mode": "DEMO",
+      "api_version": "v26.0",
+      "raw_payload_ref": "fixture:instagram:account:2026-07-04",
+      "timezone": "America/Los_Angeles",
+      "metrics": {
+        "follower_count": 11840,
+        "reach": 35500,
+        "profile_views": 1640,
+        "website_clicks": 224,
+        "profile_links_taps": null,
+        "accounts_engaged": 5100,
+        "total_interactions": 6240,
+        "likes": 4540,
+        "comments": 310,
+        "shares": 390,
+        "saved": 1000,
+        "follows": 720,
+        "unfollows": 250
+      },
+      "metric_availability": {
+        "follower_count": "available",
+        "reach": "available",
+        "profile_views": "available",
+        "website_clicks": "available",
+        "profile_links_taps": "unsupported",
+        "accounts_engaged": "available",
+        "total_interactions": "available",
+        "likes": "available",
+        "comments": "available",
+        "shares": "available",
+        "saved": "available",
+        "follows": "available",
+        "unfollows": "available"
+      },
+      "record_status": "COMPLETE",
+      "source_layer": "RAW"
+    }
+  ],
+  "media": [
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_reel_001",
+      "media_type": "REELS",
+      "published_at": "2026-07-28T16:00:00Z",
+      "caption": "A compact player with a surprisingly warm sound.",
+      "permalink": "https://example.invalid/instagram/p/reel-001",
+      "duration_seconds": 18,
+      "source_mode": "DEMO",
+      "data_layer": "RAW"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_carousel_001",
+      "media_type": "CAROUSEL_ALBUM",
+      "published_at": "2026-07-22T16:00:00Z",
+      "caption": "Three details worth checking before buying vintage audio.",
+      "permalink": "https://example.invalid/instagram/p/carousel-001",
+      "source_mode": "DEMO",
+      "data_layer": "RAW"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_image_001",
+      "media_type": "IMAGE",
+      "published_at": "2026-07-16T16:00:00Z",
+      "caption": "The texture of a well-used transport button.",
+      "permalink": "https://example.invalid/instagram/p/image-001",
+      "source_mode": "DEMO",
+      "data_layer": "RAW"
+    }
+  ],
+  "media_snapshots": [
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_reel_001",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "media_type": "REELS",
+      "source_mode": "DEMO",
+      "api_version": "v26.0",
+      "raw_payload_ref": "fixture:instagram:media:reel-001:2026-08-01",
+      "metrics": {
+        "reach": 18000,
+        "views": 24000,
+        "plays": 24000,
+        "likes": 1600,
+        "comments": 94,
+        "shares": 320,
+        "saved": 410,
+        "follows": 88,
+        "profile_visits": 142,
+        "watch_time": 273600,
+        "average_watch_time": 11.4,
+        "duration": 18,
+        "replays": null
+      },
+      "metric_availability": {
+        "reach": "available",
+        "views": "available",
+        "plays": "available",
+        "likes": "available",
+        "comments": "available",
+        "shares": "available",
+        "saved": "available",
+        "follows": "available",
+        "profile_visits": "available",
+        "watch_time": "available",
+        "average_watch_time": "available",
+        "duration": "available",
+        "replays": "unsupported"
+      },
+      "record_status": "COMPLETE",
+      "source_layer": "RAW"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_carousel_001",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "media_type": "CAROUSEL_ALBUM",
+      "source_mode": "DEMO",
+      "api_version": "v26.0",
+      "raw_payload_ref": "fixture:instagram:media:carousel-001:2026-08-01",
+      "metrics": {
+        "reach": 7200,
+        "views": null,
+        "likes": 720,
+        "comments": 58,
+        "shares": 90,
+        "saved": 220,
+        "follows": 31,
+        "profile_visits": 86
+      },
+      "metric_availability": {
+        "reach": "available",
+        "views": "unsupported",
+        "likes": "available",
+        "comments": "available",
+        "shares": "available",
+        "saved": "available",
+        "follows": "available",
+        "profile_visits": "available"
+      },
+      "record_status": "PARTIAL",
+      "source_layer": "RAW"
+    },
+    {
+      "account_ref": "ig_demo_account_001",
+      "external_media_id": "ig_media_image_001",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "media_type": "IMAGE",
+      "source_mode": "DEMO",
+      "api_version": "v26.0",
+      "raw_payload_ref": "fixture:instagram:media:image-001:2026-08-01",
+      "metrics": {
+        "reach": 4500,
+        "views": null,
+        "likes": 450,
+        "comments": 21,
+        "shares": 36,
+        "saved": 42,
+        "follows": null,
+        "profile_visits": null
+      },
+      "metric_availability": {
+        "reach": "available",
+        "views": "unsupported",
+        "likes": "available",
+        "comments": "available",
+        "shares": "available",
+        "saved": "available",
+        "follows": "unsupported",
+        "profile_visits": "unsupported"
+      },
+      "record_status": "PARTIAL",
+      "source_layer": "RAW"
+    }
+  ]
+}

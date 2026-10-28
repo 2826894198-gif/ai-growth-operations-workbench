@@ -1,0 +1,8 @@
+api_availability_target_pct: 99.5
+dashboard_p95_ms: 3000
+ingestion_freshness_target_minutes: 20
+shopify_webhook_internal_lag_minutes: 2
+execution_unauthorized_mutations: 0
+execution_duplicate_mutations: 0
+backup_max_age_hours: 24
+restore_drill_max_age_days: 30

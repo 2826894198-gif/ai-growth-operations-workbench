@@ -1,0 +1,129 @@
+rules:
+  - rule_key: FUNNEL_LOW_CTR
+    name: Funnel Low CTR
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_impressions: 20000
+    conditions:
+      all:
+        - metric: ctr_7d
+          operator: lt
+          value: 0.0025
+    action:
+      type: REFRESH_CREATIVE
+      reason: CTR_DETERIORATION
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: FUNNEL_CLICK_TO_LPV
+    name: Click to Landing Page Drop
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 30
+    conditions:
+      all:
+        - metric: click_to_lpv_7d
+          operator: lt
+          value: 0.5
+    action:
+      type: CHECK_LANDING_PAGE
+      reason: FUNNEL_ISSUE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: FUNNEL_LPV_TO_ATC
+    name: Landing Page to Add-to-Cart Weak
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 30
+    conditions:
+      all:
+        - metric: lpv_to_atc_7d
+          operator: lt
+          value: 0.05
+    action:
+      type: CHECK_PRODUCT_PAGE
+      reason: FUNNEL_ISSUE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: FUNNEL_ATC_TO_CHECKOUT
+    name: Add-to-Cart to Checkout Weak
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 30
+    conditions:
+      all:
+        - metric: atc_to_checkout_7d
+          operator: lt
+          value: 0.4
+    action:
+      type: CHECK_CART
+      reason: FUNNEL_ISSUE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: FUNNEL_CHECKOUT_TO_PURCHASE
+    name: Checkout to Purchase Weak
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 30
+    conditions:
+      all:
+        - metric: checkout_to_purchase_7d
+          operator: lt
+          value: 0.4
+    action:
+      type: CHECK_CHECKOUT
+      reason: CHECKOUT_DROP
+      risk: HIGH
+    cooldown_minutes: 1440
+
+  - rule_key: FUNNEL_HIGH_CTR_LOW_PURCHASE
+    name: High CTR Low Purchase
+    category: FUNNEL
+    platform: null
+    evaluation_level: AD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [META_INSIGHTS]
+    guards:
+      min_clicks: 50
+    conditions:
+      all:
+        - metric: ctr_7d
+          operator: gte
+          value: 0.005
+        - metric: cvr_7d
+          operator: lte
+          value: 0.01
+    action:
+      type: CHECK_CHECKOUT
+      reason: FUNNEL_ISSUE
+      risk: MEDIUM
+    cooldown_minutes: 1440

@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-dtc-growth-backend"
+version = "0.1.0"
+description = "AI DTC Growth Automation System - Part 01 backend"
+requires-python = ">=3.9"
+dependencies = [
+  "fastapi>=0.110,<1",
+  "uvicorn[standard]>=0.29",
+  "pydantic>=2.6,<3",
+  "pydantic-settings>=2.2",
+  "sqlalchemy[asyncio]>=2.0.25",
+  "asyncpg>=0.29",
+  "alembic>=1.13",
+  "redis>=5.0",
+  "celery[redis]>=5.3",
+  "httpx>=0.27",
+  "cryptography>=42",
+  "python-json-logger>=2.0",
+  "greenlet>=3.0",
+  "langgraph>=0.2.60",
+  "langgraph-checkpoint-sqlite>=2.0",
+  "openai>=1.40",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "pytest-cov>=4.1",
+  "aiosqlite>=0.20",
+  "fakeredis>=2.21",
+  "respx>=0.21",
+  "ruff>=0.4",
+]
+google = [
+  "google-ads>=24.0",
+  "google-genai>=1.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["../tests"]
+markers = [
+  "integration: requires a live AdsPower Local API (deselect with -m 'not integration')",
+  "smoke: requires a live AdsPower + browser",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["B008", "E501"]

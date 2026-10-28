@@ -1,0 +1,6 @@
+* @your-org/core
+/backend/app/execution/ @your-org/execution-safety
+/backend/app/services/social/connection_service.py @your-org/platform-security
+/infra/postgres/ @your-org/platform-security
+/migrations/ @your-org/data
+/.github/workflows/ @your-org/platform

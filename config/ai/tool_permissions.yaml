@@ -1,0 +1,17 @@
+agents:
+  supervisor:
+    tools: [get_open_recommendations, get_rule_findings]
+  performance:
+    tools: [get_growth_overview, get_platform_performance, get_campaign_performance, get_ad_group_performance, get_ad_performance, get_creative_performance, get_funnel_performance, get_metric_baseline, get_open_recommendations, get_entity_rule_findings, get_rule_evidence, get_suppressed_decisions, get_business_targets, get_store_overview, get_orders_summary, get_refund_summary, get_aov_trend, get_product_performance, get_order_attribution_summary, search_business_memory, safe_divide, percent_change, weighted_average, zscore, median, mad, confidence_components]
+  creative:
+    tools: [get_creative_metadata, get_creative_asset, get_creative_performance_history, get_creative_ai_analysis, save_creative_ai_analysis, get_entity_rule_findings, search_brand_knowledge, search_creative_taxonomy, search_growth_playbook, search_business_memory, write_business_memory]
+  search:
+    tools: [get_search_term_performance, get_keyword_performance, get_query_clusters, get_negative_candidates, get_entity_rule_findings, search_product_knowledge, search_business_memory]
+  funnel:
+    tools: [get_funnel_performance, get_growth_overview, get_orders_summary, get_refund_summary, get_entity_rule_findings, search_site_knowledge, search_business_memory]
+  competitor:
+    tools: [public_page_snapshot, take_screenshot, search_brand_knowledge, search_product_knowledge, search_creative_taxonomy, search_business_memory, write_business_memory]
+  strategy:
+    tools: [get_growth_overview, get_open_recommendations, get_rule_findings, get_business_targets, search_business_memory, search_growth_playbook, search_brand_knowledge]
+  reviewer:
+    tools: [get_rule_evidence, get_business_targets, get_growth_overview]

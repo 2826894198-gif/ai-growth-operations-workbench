@@ -1,0 +1,334 @@
+rules:
+  - rule_key: GOOGLE_NO_CONVERSION_BURN
+    name: No Conversion Burn
+    category: CAMPAIGN
+    platform: GOOGLE
+    evaluation_level: AD_GROUP
+    severity: HIGH
+    schedule_group: INTRADAY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_age_hours: 24
+      data_freshness_minutes: 60
+      min_clicks: 20
+    conditions:
+      all:
+        - metric: conversions_3d
+          operator: eq
+          value: 0
+        - metric: spend_3d
+          operator: target_multiple_gte
+          target: target_cpa
+          multiple: 2.0
+    action:
+      type: REVIEW_PAUSE
+      reason: NO_PURCHASE_BURN
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_CPA_OVERSHOOT
+    name: CPA Overshoot
+    category: CAMPAIGN
+    platform: GOOGLE
+    evaluation_level: AD_GROUP
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_conversions: 3
+    conditions:
+      all:
+        - metric: cpa_3d
+          operator: target_multiple_gt
+          target: target_cpa
+          multiple: 1.5
+    action:
+      type: REVIEW_REDUCE_BUDGET
+      reason: CPA_OVERSHOOT
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_SEARCH_TERM_WASTE
+    name: Search Term Waste
+    category: SEARCH_TERM
+    platform: GOOGLE
+    evaluation_level: SEARCH_TERM
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_SEARCH_TERMS]
+    guards:
+      min_clicks: 10
+    conditions:
+      all:
+        - metric: search_term_spend_30d
+          operator: target_multiple_gte
+          target: target_cpa
+          multiple: 1.5
+        - metric: search_term_conversions_30d
+          operator: eq
+          value: 0
+    action:
+      type: REVIEW_NEGATIVE_KEYWORD
+      reason: SEARCH_TERM_WASTE
+      risk: MEDIUM
+    cooldown_minutes: 2880
+
+  - rule_key: GOOGLE_NEGATIVE_KEYWORD_CANDIDATE
+    name: Negative Keyword Candidate
+    category: KEYWORD
+    platform: GOOGLE
+    evaluation_level: SEARCH_TERM
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_SEARCH_TERMS]
+    guards:
+      min_clicks: 5
+    conditions:
+      all:
+        - metric: search_term_semantic_waste
+          operator: eq
+          value: true
+    action:
+      type: REVIEW_NEGATIVE_KEYWORD
+      reason: SEARCH_TERM_WASTE
+      risk: MEDIUM
+    cooldown_minutes: 2880
+
+  - rule_key: GOOGLE_KEYWORD_STRONG_PERFORMER
+    name: Keyword Strong Performer
+    category: KEYWORD
+    platform: GOOGLE
+    evaluation_level: KEYWORD
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_conversions: 3
+      min_spend: 20
+    conditions:
+      all:
+        - metric: keyword_cpa_7d
+          operator: lte
+          target: target_cpa
+          value: null
+    action:
+      type: OBSERVE
+      reason: ROAS_ABOVE_TARGET
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_KEYWORD_WASTE
+    name: Keyword Waste
+    category: KEYWORD
+    platform: GOOGLE
+    evaluation_level: KEYWORD
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API, GOOGLE_SEARCH_TERMS]
+    guards:
+      min_clicks: 20
+    conditions:
+      all:
+        - metric: keyword_spend_7d
+          operator: target_multiple_gte
+          target: target_cpa
+          multiple: 1.5
+        - metric: keyword_conversions_7d
+          operator: eq
+          value: 0
+    action:
+      type: REVIEW_NEGATIVE_KEYWORD
+      reason: KEYWORD_WASTE
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_CPC_SHOCK
+    name: CPC Shock
+    category: ANOMALY
+    platform: GOOGLE
+    evaluation_level: AD_GROUP
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: cpc_zscore_7d
+          operator: gt
+          value: 2.5
+    action:
+      type: INVESTIGATE
+      reason: CPC_SHOCK
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_CTR_WEAKNESS
+    name: CTR Weakness
+    category: KEYWORD
+    platform: GOOGLE
+    evaluation_level: KEYWORD
+    severity: LOW
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_impressions: 5000
+    conditions:
+      all:
+        - metric: keyword_ctr_change_pct_7d
+          operator: lte
+          value: -30
+    action:
+      type: INVESTIGATE
+      reason: CTR_DETERIORATION
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_CVR_COLLAPSE
+    name: Conversion Rate Collapse
+    category: CAMPAIGN
+    platform: GOOGLE
+    evaluation_level: CAMPAIGN
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards:
+      min_clicks: 50
+    conditions:
+      all:
+        - metric: cvr_change_pct_7d
+          operator: lte
+          value: -50
+    action:
+      type: CHECK_TRACKING
+      reason: TRACKING_ANOMALY
+      risk: MEDIUM
+    cooldown_minutes: 360
+
+  - rule_key: GOOGLE_SEARCH_TERM_EXPANSION
+    name: Search Term Expansion Candidate
+    category: SEARCH_TERM
+    platform: GOOGLE
+    evaluation_level: SEARCH_TERM
+    severity: INFO
+    schedule_group: WEEKLY
+    required_capabilities: [GOOGLE_SEARCH_TERMS]
+    guards:
+      min_conversions: 3
+    conditions:
+      all:
+        - metric: search_term_cpa_30d
+          operator: lte
+          target: target_cpa
+          value: null
+    action:
+      type: REVIEW_ADD_KEYWORD
+      reason: ROAS_ABOVE_TARGET
+      risk: LOW
+    cooldown_minutes: 10080
+
+  - rule_key: GOOGLE_BUDGET_CONSTRAINED
+    name: Budget Constrained Signal
+    category: BUDGET
+    platform: GOOGLE
+    evaluation_level: CAMPAIGN
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_conversions: 5
+    conditions:
+      all:
+        - metric: roas_7d
+          operator: gte
+          target: target_roas
+          value: null
+    action:
+      type: REVIEW_SCALE
+      reason: ROAS_ABOVE_TARGET
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_PMAX_EFFICIENCY
+    name: PMax Base Efficiency Alert
+    category: CAMPAIGN
+    platform: GOOGLE
+    evaluation_level: CAMPAIGN
+    severity: MEDIUM
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards:
+      min_spend: 50
+    conditions:
+      all:
+        - metric: channel_type
+          operator: eq
+          value: MULTI_CHANNEL
+        - metric: roas_7d
+          operator: lte
+          target: break_even_roas
+          value: null
+    action:
+      type: INVESTIGATE
+      reason: ROAS_BELOW_TARGET
+      risk: MEDIUM
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_BRAND_NONBRAND_GUARD
+    name: Brand / Non-brand Separation Guard
+    category: CAMPAIGN
+    platform: GOOGLE
+    evaluation_level: CAMPAIGN
+    severity: INFO
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API]
+    guards: {}
+    conditions:
+      all:
+        - metric: strategy_label
+          operator: is_null
+          value: null
+    action:
+      type: OBSERVE
+      reason: MISSING_STRATEGY_LABEL
+      risk: LOW
+    cooldown_minutes: 1440
+
+  - rule_key: GOOGLE_MATCH_TYPE_DRIFT
+    name: Match Type Drift
+    category: KEYWORD
+    platform: GOOGLE
+    evaluation_level: AD_GROUP
+    severity: LOW
+    schedule_group: WEEKLY
+    required_capabilities: [GOOGLE_SEARCH_TERMS]
+    guards: {}
+    conditions:
+      all:
+        - metric: waste_ratio_30d
+          operator: gt
+          value: 0.5
+    action:
+      type: INVESTIGATE
+      reason: QUERY_DRIFT
+      risk: LOW
+    cooldown_minutes: 10080
+
+  - rule_key: GOOGLE_CONVERSION_TRACKING_ANOMALY
+    name: Conversion Tracking Anomaly
+    category: ANOMALY
+    platform: GOOGLE
+    evaluation_level: CAMPAIGN
+    severity: HIGH
+    schedule_group: DAILY
+    required_capabilities: [GOOGLE_ADS_API, SHOPIFY_ORDERS]
+    guards: {}
+    conditions:
+      all:
+        - metric: conversion_tracking_anomaly
+          operator: eq
+          value: true
+    action:
+      type: CHECK_TRACKING
+      reason: TRACKING_ANOMALY
+      risk: MEDIUM
+    cooldown_minutes: 360

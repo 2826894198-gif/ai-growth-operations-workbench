@@ -1,0 +1,28 @@
+{
+  "name": "Stale source must block downstream decisions",
+  "rule": {
+    "rule_key": "DATA_STALE",
+    "version": 1,
+    "category": "DATA",
+    "platform": null,
+    "evaluation_level": "ACCOUNT",
+    "severity": "HIGH",
+    "guards": {"data_freshness_minutes": 30},
+    "conditions": {"all": [{"metric": "source_stale", "operator": "eq", "value": true}]},
+    "action": {"type": "CHECK_DATA_SOURCE", "reason": "DATA_STALE", "risk": "LOW"},
+    "cooldown_minutes": 360
+  },
+  "context": {
+    "metrics": {"source_stale": true, "clicks_7d": 300, "spend_7d": 300, "purchases_7d": 3, "entity_age_hours": 700},
+    "business_targets": {},
+    "data_freshness_minutes": 120,
+    "entity_age_hours": 700,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "CHECK_DATA_SOURCE", "severity": "HIGH", "confidence_band": "LOW"}
+}

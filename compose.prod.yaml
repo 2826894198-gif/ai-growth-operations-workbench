@@ -1,0 +1,52 @@
+services:
+  db:
+    ports: !override []   # no host-published database port
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/roles.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
+      - ./infra/postgres/rls.sql:/docker-entrypoint-initdb.d/20-rls.sql:ro
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+  redis:
+    ports: !override []   # no host-published redis port
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+  backend:
+    environment:
+      APP_ENV: production
+      EXECUTION_MODE: manual
+      EXECUTION_DEMO_PERMISSIONS: "false"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+  execution-worker:
+    environment:
+      APP_ENV: production
+      EXECUTION_MODE: manual
+      EXECUTION_DEMO_PERMISSIONS: "false"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    networks:
+      - data
+      - execution
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+  dashboard:
+    ports: !override []   # served through the edge
+    networks:
+      - edge

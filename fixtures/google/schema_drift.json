@@ -1,0 +1,341 @@
+{
+  "accounts": [
+    {
+      "external_account_id": "123-456-7890",
+      "name": "Brand Google Account",
+      "currency": "USD",
+      "timezone": "America/New_York"
+    }
+  ],
+  "campaigns": [
+    {
+      "external_id": "7150000001",
+      "name": "Search - Brand",
+      "status": "ENABLED",
+      "channel_type": "SEARCH",
+      "channel_sub_type": "SEARCH_STANDARD",
+      "start_time": "2026-07-30T12:00:00+00:00",
+      "end_time": null
+    },
+    {
+      "external_id": "7150000002",
+      "name": "PMax - Prospecting",
+      "status": "ENABLED",
+      "channel_type": "MULTI_CHANNEL",
+      "channel_sub_type": "PERFORMANCE_MAX",
+      "start_time": "2026-08-29T12:00:00+00:00",
+      "end_time": null
+    }
+  ],
+  "ad_groups": [
+    {
+      "external_id": "7151111111",
+      "campaign_external_id": "7150000001",
+      "name": "Brand - Exact",
+      "status": "ENABLED",
+      "type": "SEARCH_STANDARD"
+    },
+    {
+      "external_id": "7151111112",
+      "campaign_external_id": "7150000001",
+      "name": "Brand - Phrase",
+      "status": "ENABLED",
+      "type": "SEARCH_STANDARD"
+    }
+  ],
+  "ads": [
+    {
+      "external_id": "7152222221",
+      "campaign_external_id": "7150000001",
+      "ad_group_external_id": "7151111111",
+      "status": "ENABLED",
+      "name": "RSNA Brand 1"
+    },
+    {
+      "external_id": "7152222222",
+      "campaign_external_id": "7150000001",
+      "ad_group_external_id": "7151111112",
+      "status": "ENABLED",
+      "name": "RSNA Brand 2"
+    }
+  ],
+  "creatives": [],
+  "keywords": [
+    {
+      "criterion_id": "7153333331",
+      "ad_group_external_id": "7151111111",
+      "keyword_text": "vitamin c serum",
+      "match_type": "EXACT"
+    },
+    {
+      "criterion_id": "7153333332",
+      "ad_group_external_id": "7151111112",
+      "keyword_text": "best vitamin c serum",
+      "match_type": "PHRASE"
+    }
+  ],
+  "search_terms": [
+    {
+      "campaign_external_id": "7150000001",
+      "ad_group_external_id": "7151111111",
+      "search_term": "vitamin c serum for face"
+    },
+    {
+      "campaign_external_id": "7150000001",
+      "ad_group_external_id": "7151111112",
+      "search_term": "best vitamin c serum 2026"
+    }
+  ],
+  "conversion_actions": [
+    {
+      "id": "7154444441",
+      "name": "Purchase"
+    },
+    {
+      "id": "7154444442",
+      "name": "Add to cart"
+    }
+  ],
+  "asset_groups": [
+    {
+      "external_id": "7155555551",
+      "campaign_external_id": "7150000002",
+      "name": "PMax - US Prospecting",
+      "status": "ENABLED"
+    }
+  ],
+  "performance": [
+    {
+      "date": "2026-10-26",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000001",
+      "impressions": 7240,
+      "clicks": 180,
+      "cost_micros": 186300039,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000002",
+      "impressions": 3619,
+      "clicks": 127,
+      "cost_micros": 200166367,
+      "conversions": 2,
+      "conversion_value": 145.8307,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111111",
+      "impressions": 3662,
+      "clicks": 73,
+      "cost_micros": 118096759,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111112",
+      "impressions": 7533,
+      "clicks": 192,
+      "cost_micros": 238795168,
+      "conversions": 1,
+      "conversion_value": 69.4849,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD",
+      "external_entity_id": "7152222221",
+      "impressions": 7218,
+      "clicks": 159,
+      "cost_micros": 114400349,
+      "conversions": 1,
+      "conversion_value": 69.0297,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "AD",
+      "external_entity_id": "7152222222",
+      "impressions": 7064,
+      "clicks": 204,
+      "cost_micros": 240344733,
+      "conversions": 1,
+      "conversion_value": 79.3603,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-26",
+      "entity_type": "ASSET_GROUP",
+      "external_entity_id": "7155555551",
+      "impressions": 3514,
+      "clicks": 75,
+      "cost_micros": 125397432,
+      "conversions": 2,
+      "conversion_value": 133.3893,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000001",
+      "impressions": 6007,
+      "clicks": 209,
+      "cost_micros": 118379251,
+      "conversions": 2,
+      "conversion_value": 158.7454,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000002",
+      "impressions": 6379,
+      "clicks": 202,
+      "cost_micros": 170401502,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111111",
+      "impressions": 4422,
+      "clicks": 132,
+      "cost_micros": 151131091,
+      "conversions": 1,
+      "conversion_value": 65.0823,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111112",
+      "impressions": 3841,
+      "clicks": 134,
+      "cost_micros": 279557243,
+      "conversions": 1,
+      "conversion_value": 69.3111,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD",
+      "external_entity_id": "7152222221",
+      "impressions": 2282,
+      "clicks": 139,
+      "cost_micros": 228745762,
+      "conversions": 1,
+      "conversion_value": 76.0829,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "AD",
+      "external_entity_id": "7152222222",
+      "impressions": 8151,
+      "clicks": 74,
+      "cost_micros": 224772430,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-27",
+      "entity_type": "ASSET_GROUP",
+      "external_entity_id": "7155555551",
+      "impressions": 4723,
+      "clicks": 97,
+      "cost_micros": 99214604,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000001",
+      "impressions": 5312,
+      "clicks": 193,
+      "cost_micros": 197517076,
+      "conversions": 1,
+      "conversion_value": 69.5637,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "CAMPAIGN",
+      "external_entity_id": "7150000002",
+      "impressions": 4131,
+      "clicks": 237,
+      "cost_micros": 188256739,
+      "conversions": 2,
+      "conversion_value": 147.8501,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111111",
+      "impressions": 5694,
+      "clicks": 153,
+      "cost_micros": 111186374,
+      "conversions": 2,
+      "conversion_value": 123.8358,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD_GROUP",
+      "external_entity_id": "7151111112",
+      "impressions": 8533,
+      "clicks": 135,
+      "cost_micros": 303625037,
+      "conversions": 2,
+      "conversion_value": 146.2939,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD",
+      "external_entity_id": "7152222221",
+      "impressions": 5473,
+      "clicks": 55,
+      "cost_micros": 276030748,
+      "conversions": 2,
+      "conversion_value": 121.5837,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "AD",
+      "external_entity_id": "7152222222",
+      "impressions": 8661,
+      "clicks": 64,
+      "cost_micros": 249767686,
+      "conversions": 0,
+      "conversion_value": 0.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity_type": "ASSET_GROUP",
+      "external_entity_id": "7155555551",
+      "impressions": 7153,
+      "clicks": 68,
+      "cost_micros": 237004068,
+      "conversions": 2,
+      "conversion_value": 128.1095,
+      "currency": "USD"
+    }
+  ],
+  "scenario": "schema_drift"
+}

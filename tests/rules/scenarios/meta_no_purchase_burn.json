@@ -1,0 +1,31 @@
+{
+  "name": "Mature no-purchase burn should recommend review pause",
+  "rule": {
+    "rule_key": "META_NO_PURCHASE_BURN",
+    "version": 1,
+    "category": "CAMPAIGN",
+    "platform": "META",
+    "evaluation_level": "AD",
+    "severity": "HIGH",
+    "guards": {"min_age_hours": 24, "data_freshness_minutes": 30, "min_clicks": 30},
+    "conditions": {"all": [
+      {"metric": "purchases_3d", "operator": "eq", "value": 0},
+      {"metric": "spend_3d", "operator": "target_multiple_gte", "target": "target_cpa", "multiple": 2.0}
+    ]},
+    "action": {"type": "REVIEW_PAUSE", "reason": "NO_PURCHASE_BURN", "risk": "MEDIUM"},
+    "cooldown_minutes": 1440
+  },
+  "context": {
+    "metrics": {"purchases_3d": 0, "spend_3d": 90.0, "clicks_7d": 120, "spend_7d": 210.0, "purchases_7d": 0},
+    "business_targets": {"target_cpa": 30.0},
+    "data_freshness_minutes": 8,
+    "entity_age_hours": 72,
+    "recent_changes": [],
+    "active_experiments": []
+  },
+  "defaults": {
+    "sample_reliability": {"min_active_hours": 24, "min_clicks_units": 30, "min_purchases_units": 3, "min_spend_units": 20},
+    "confidence_weights": {"data_freshness": 0.2, "sample_reliability": 0.25, "rule_strength": 0.25, "signal_agreement": 0.2, "cross_source": 0.1}
+  },
+  "expected": {"result": "TRIGGERED", "action": "REVIEW_PAUSE", "severity": "HIGH", "confidence_band": "MEDIUM"}
+}

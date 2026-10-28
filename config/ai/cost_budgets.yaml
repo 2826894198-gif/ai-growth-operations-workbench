@@ -1,0 +1,12 @@
+task_budgets:
+  daily_growth_review: 0.25
+  weekly_growth_review: 1.0
+  performance_qa: 0.10
+  creative_qa: 0.15
+  search_qa: 0.10
+  funnel_qa: 0.10
+  competitor_qa: 0.15
+  strategy_request: 0.30
+  experiment_request: 0.20
+  recommendation_explain: 0.05
+  creative_video_analysis: 0.50
